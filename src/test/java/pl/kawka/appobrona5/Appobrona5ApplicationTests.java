@@ -1,10 +1,10 @@
-package pl.kawka.appobrona3;
+package pl.kawka.appobrona5;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class Appobrona3ApplicationTests {
+class Appobrona5ApplicationTests {
 
 	@Test
 	void contextLoads() {

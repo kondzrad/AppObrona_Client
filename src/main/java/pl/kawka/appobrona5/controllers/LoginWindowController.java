@@ -1,36 +1,24 @@
-package pl.kawka.appobrona3.controllers;
+package pl.kawka.appobrona5.controllers;
 
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.stage.Stage;
-import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
-import org.json.simple.parser.JSONParser;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Controller;
-import pl.kawka.appobrona3.employee.Employee;
 
 import java.io.BufferedReader;
-import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.ResourceBundle;
 
 //@Component
 @Controller
-public class MainWindowController {
+public class LoginWindowController {
 
-    public MainWindowController(){
+    private MainWindowController mainWindowController; //pole do ustawienia Set
+
+    public LoginWindowController(){
         System.out.println("Jestem kontrolerem w kontruktorze");
     }
 
@@ -95,9 +83,7 @@ public class MainWindowController {
     }
 
 
-
-
-
-
-
+    public void setMainWindowController(MainWindowController mainWindowController) {
+        this.mainWindowController = mainWindowController;
+    }
 }
