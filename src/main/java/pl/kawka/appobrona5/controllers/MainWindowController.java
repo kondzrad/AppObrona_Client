@@ -4,9 +4,11 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
+import org.springframework.stereotype.Controller;
 
 import java.io.IOException;
 
+@Controller
 public class MainWindowController { //kontroler glownego pustego okna
 
     @FXML
@@ -15,6 +17,7 @@ public class MainWindowController { //kontroler glownego pustego okna
     @FXML
     public void initialize() { //metoda wywolywana zaraz po kontruktorze
         loadMenuScreen();
+        // to mozna zakomentowac i wtedy aplikacja startuje z glownym widokiem zadeklarowym w AppObrona5Application
     }
 
     public void loadMenuScreen() { //ladowanie ekranu login
@@ -33,6 +36,17 @@ public class MainWindowController { //kontroler glownego pustego okna
 
         //teraz do stackpane glownego wrzucamy Pane z opcjami
         setScreen(pane);
+//////////////// proba zaladowania sceny TestW zamiast login - nieudana
+        /*FXMLLoader loader = new FXMLLoader(this.getClass().getResource("/fxml/TestW.fxml"));
+        Pane pane = null;
+        try {
+            pane = loader.load();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        TestC testC = loader.getController(); //wyciagamy referencje
+        testC.setMainWindowController(this);//przekaznie instancji klasy menu kontroller do inyych (beda sie mogly
+        setScreen(pane);*/
     }
 
     public void setScreen(Pane pane) {

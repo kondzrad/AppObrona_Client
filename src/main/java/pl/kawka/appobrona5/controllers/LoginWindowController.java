@@ -2,11 +2,14 @@ package pl.kawka.appobrona5.controllers;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.control.*;
+import javafx.scene.layout.Pane;
 import org.json.simple.JSONObject;
 import org.springframework.stereotype.Controller;
 
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
@@ -18,12 +21,12 @@ public class LoginWindowController {
 
     private MainWindowController mainWindowController; //pole do ustawienia Set
 
-    public LoginWindowController(){
+    public LoginWindowController() {
         System.out.println("Jestem kontrolerem w kontruktorze");
     }
 
     @FXML
-    private TextField fieldLogin,fieldHaslo;
+    private TextField fieldLogin, fieldHaslo;
     @FXML
     private Label statusLogowania;
     @FXML
@@ -31,16 +34,15 @@ public class LoginWindowController {
 
 
     @FXML
-    void initialize(){    }
-
+    void initialize() {
+    }
 
     @FXML
-    private void akcjaLogowania(ActionEvent event){
+    private void akcjaLogowania(ActionEvent event) {
 
         JSONObject json = new JSONObject();
         json.put("login", fieldLogin.getText());
         json.put("password", fieldHaslo.getText());
-
 
         System.out.println(json);
 
@@ -49,26 +51,22 @@ public class LoginWindowController {
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
             conn.setUseCaches(false);
             conn.setDoInput(true);
-            conn.setRequestProperty("Content-Type","application/json");
+            conn.setRequestProperty("Content-Type", "application/json");
             conn.setDoOutput(true);
             conn.setRequestMethod("POST"); //zeby wyslac jakies obiekt JSON chyba nie da sie z GET bo probowalem
             OutputStreamWriter wr = new OutputStreamWriter(conn.getOutputStream());
-            System.out.println("poszłooooooooooooooooo1");
             wr.write(json.toString());
-            System.out.println("poszłooooooooooooooooo2");
             wr.flush();
             wr.flush();
             wr.close();
-            System.out.println("poszłooooooooooooooooo3");
             conn.getInputStream();
-            System.out.println("poszłooooooooooooooooo4");
             BufferedReader in = new BufferedReader(new InputStreamReader(conn.getInputStream()));
-
-            System.out.println("poszłooooooooooooooooo5");
             String wczytany = in.readLine();
-            if (wczytany.equalsIgnoreCase("OKpracownik")){
+            if (wczytany.equalsIgnoreCase("OKpracownik")) {
                 System.out.println("ok_pracownik");
                 statusLogowania.setText("Jest git!");
+                //wczytanieEmployeeWindow(); //wczytanie widoku pracownika po poprawnym zalogowaniu
+                                             //zakomentowane poniewaz nie dziala nakladanie sie widokow
             } else if (wczytany.equalsIgnoreCase("OKadmin")) {
                 System.out.println("ok_admin");
                 statusLogowania.setText("Jest git!");
@@ -76,9 +74,39 @@ public class LoginWindowController {
                 statusLogowania.setText("Błędne logowanie!");
             }
 
-        } catch(Exception ex) {
+        } catch (Exception ex) {
             ex.printStackTrace();
         }
+
+    }
+
+    @FXML
+    public void wczytanieEmployeeWindow() {
+        FXMLLoader loader = new FXMLLoader(this.getClass().getResource("/fxml/EmployeeWindow.fxml"));
+        Pane pane = null;
+        try {
+            pane = loader.load();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        EmployeeWindowController employeeWindowController = loader.getController();
+        employeeWindowController.setMainWindowController(mainWindowController);
+        mainWindowController.setScreen(pane);
+    }
+
+
+    @FXML
+    public void testA() {
+        FXMLLoader loader = new FXMLLoader(this.getClass().getResource("/fxml/TestW.fxml"));
+        Pane pane = null;
+        try {
+            pane = loader.load();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        TestC testC = loader.getController();
+        testC.setMainWindowController(mainWindowController);
+        mainWindowController.setScreen(pane);
 
     }
 
