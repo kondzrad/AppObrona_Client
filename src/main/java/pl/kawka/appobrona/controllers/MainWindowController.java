@@ -1,10 +1,9 @@
-package pl.kawka.appobrona5.controllers;
+package pl.kawka.appobrona.controllers;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
-import javafx.scene.layout.StackPane;
 import org.springframework.stereotype.Controller;
 
 import java.io.IOException;
@@ -18,7 +17,7 @@ public class MainWindowController { //kontroler glownego pustego okna
     @FXML
     public void initialize() { //metoda wywolywana zaraz po kontruktorze
         loadMenuScreen();
-        // to mozna zakomentowac i wtedy aplikacja startuje z glownym widokiem zadeklarowym w AppObrona5Application
+        // to mozna zakomentowac i wtedy aplikacja startuje z glownym widokiem zadeklarowym w AppObronaClientApplication
     }
 
     public void loadMenuScreen() { //ladowanie ekranu login

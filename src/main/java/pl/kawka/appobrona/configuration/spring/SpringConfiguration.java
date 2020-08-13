@@ -1,4 +1,4 @@
-package pl.kawka.appobrona5.configuration.spring;
+package pl.kawka.appobrona.configuration.spring;
 
 import org.springframework.context.annotation.Configuration;
 

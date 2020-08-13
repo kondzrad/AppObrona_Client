@@ -1,4 +1,4 @@
-package pl.kawka.appobrona5;
+package pl.kawka.appobrona;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -10,7 +10,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
 
 @SpringBootApplication
-public class AppObrona5Application extends Application {
+public class AppObronaClientApplication extends Application {
     private ConfigurableApplicationContext springContext; //do wstrzykiwania zaleznosci
     private Parent rootNode;
 
@@ -29,7 +29,7 @@ public class AppObrona5Application extends Application {
 
     @Override
     public void init() throws Exception {
-        springContext = SpringApplication.run(AppObrona5Application.class); //przypisanie contextowi start aplikacji
+        springContext = SpringApplication.run(AppObronaClientApplication.class); //przypisanie contextowi start aplikacji
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/MainWindow.fxml"));
         fxmlLoader.setControllerFactory(springContext::getBean);//kontrolery za obluge widokow beda tworzone przez
         // spring kontext

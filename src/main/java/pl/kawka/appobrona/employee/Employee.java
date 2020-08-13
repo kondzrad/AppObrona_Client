@@ -1,4 +1,4 @@
-package pl.kawka.appobrona5.employee;
+package pl.kawka.appobrona.employee;
 
 public class Employee {
 

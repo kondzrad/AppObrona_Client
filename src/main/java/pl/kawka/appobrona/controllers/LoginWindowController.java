@@ -1,4 +1,4 @@
-package pl.kawka.appobrona5.controllers;
+package pl.kawka.appobrona.controllers;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
