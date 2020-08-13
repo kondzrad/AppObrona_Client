@@ -38,17 +38,7 @@ public class MainWindowController { //kontroler glownego pustego okna
 
         //teraz do stackpane glownego wrzucamy Pane z opcjami
         setScreen(pane);
-//////////////// proba zaladowania sceny TestW zamiast login - nieudana
-        /*FXMLLoader loader = new FXMLLoader(this.getClass().getResource("/fxml/TestW.fxml"));
-        Pane pane = null;
-        try {
-            pane = loader.load();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        TestC testC = loader.getController(); //wyciagamy referencje
-        testC.setMainWindowController(this);//przekaznie instancji klasy menu kontroller do inyych (beda sie mogly
-        setScreen(pane);*/
+
     }
 
     public void setScreen(Pane pane) {

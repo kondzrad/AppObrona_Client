@@ -14,7 +14,8 @@
       <TextField fx:id="fieldHaslo" layoutX="46.0" layoutY="127.0" promptText="Hasło" />
       <Label fx:id="statusLogowania" layoutX="213.0" layoutY="176.0" text="Czekam!" />
       <Button fx:id="przyciskLogowania" layoutX="75.0" layoutY="172.0" mnemonicParsing="false" onAction="#akcjaLogowania" text="Zaloguj" />
-      <Button layoutX="187.0" layoutY="238.0" mnemonicParsing="false" onAction="#wczytanieEmployeeWindow" text="Button" />
-      <Button layoutX="293.0" layoutY="282.0" mnemonicParsing="false" onAction="#testA" text="Button" />
+      <Button layoutX="187.0" layoutY="238.0" mnemonicParsing="false" onAction="#wczytanieEmployeeWindow" text="EmployeeWindow" />
+      <Button layoutX="364.0" layoutY="273.0" mnemonicParsing="false" onAction="#testA" text="TestWindow" />
+      <Button layoutX="196.0" layoutY="273.0" mnemonicParsing="false" onAction="#wczytanieAdminWindow" text="AdminWindow" />
    </children>
 </AnchorPane>

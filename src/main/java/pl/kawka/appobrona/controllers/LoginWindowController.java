@@ -65,11 +65,12 @@ public class LoginWindowController {
             if (wczytany.equalsIgnoreCase("OKpracownik")) {
                 System.out.println("ok_pracownik");
                 statusLogowania.setText("Jest git!");
-                //wczytanieEmployeeWindow(); //wczytanie widoku pracownika po poprawnym zalogowaniu
+                wczytanieEmployeeWindow(); //wczytanie widoku pracownika po poprawnym zalogowaniu
                                              //zakomentowane poniewaz nie dziala nakladanie sie widokow
             } else if (wczytany.equalsIgnoreCase("OKadmin")) {
                 System.out.println("ok_admin");
                 statusLogowania.setText("Jest git!");
+                wczytanieAdminWindow();
             } else {
                 statusLogowania.setText("Błędne logowanie!");
             }
@@ -91,6 +92,20 @@ public class LoginWindowController {
         }
         EmployeeWindowController employeeWindowController = loader.getController();
         employeeWindowController.setMainWindowController(mainWindowController);
+        mainWindowController.setScreen(pane);
+    }
+
+    @FXML
+    public void wczytanieAdminWindow() {
+        FXMLLoader loader = new FXMLLoader(this.getClass().getResource("/fxml/AdminWindow.fxml"));
+        Pane pane = null;
+        try {
+            pane = loader.load();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        AdminWindowController adminWindowController = loader.getController();
+        adminWindowController.setMainWindowController(mainWindowController);
         mainWindowController.setScreen(pane);
     }
 

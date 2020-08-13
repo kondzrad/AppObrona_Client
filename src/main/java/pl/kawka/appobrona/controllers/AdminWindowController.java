@@ -1,11 +1,10 @@
 package pl.kawka.appobrona.controllers;
 
-
 import javafx.fxml.FXML;
 import org.springframework.stereotype.Controller;
 
 @Controller
-public class EmployeeWindowController {
+public class AdminWindowController {
 
     private MainWindowController mainWindowController;
 
@@ -17,4 +16,5 @@ public class EmployeeWindowController {
     public void setMainWindowController(MainWindowController mainWindowController) {
         this.mainWindowController = mainWindowController;
     }
+
 }
