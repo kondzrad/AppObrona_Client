@@ -2,6 +2,7 @@ package pl.kawka.appobrona5.controllers;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import org.springframework.stereotype.Controller;
@@ -12,7 +13,7 @@ import java.io.IOException;
 public class MainWindowController { //kontroler glownego pustego okna
 
     @FXML
-    private StackPane mainStackPane;
+    private AnchorPane mainStackPane;
 
     @FXML
     public void initialize() { //metoda wywolywana zaraz po kontruktorze
@@ -22,6 +23,8 @@ public class MainWindowController { //kontroler glownego pustego okna
 
     public void loadMenuScreen() { //ladowanie ekranu login
         FXMLLoader loader = new FXMLLoader(this.getClass().getResource("/fxml/LoginWindow.fxml"));
+
+        System.out.println("nic");
 
         Pane pane = null;
         try {
@@ -50,6 +53,7 @@ public class MainWindowController { //kontroler glownego pustego okna
     }
 
     public void setScreen(Pane pane) {
+        //wyrzucalo Null exception poniewaz nie mialem przypisanego: fx:id="mainStackPane" w MainWindow.fxml
         mainStackPane.getChildren().clear(); //usuwanie elemntow by kolejne elementy nie naklay sie na siebie po
         // przejsciu na kolejne ekrany
         mainStackPane.getChildren().add(pane); //pobieramy dzieci czyli liste elementow co w sobie zawiera
