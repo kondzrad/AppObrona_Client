@@ -17,7 +17,7 @@ public class MainWindowController { //kontroler glownego pustego okna
     @FXML
     public void initialize() { //metoda wywolywana zaraz po kontruktorze
         loadMenuScreen();
-        // to mozna zakomentowac i wtedy aplikacja startuje z glownym widokiem zadeklarowym w AppObronaClientApplication
+        // to mozna zakomentowac i wtedy aplikacja startuje z glownym widokiem zadeklarowym w AppObronaClient
     }
 
     public void loadMenuScreen() { //ladowanie ekranu login

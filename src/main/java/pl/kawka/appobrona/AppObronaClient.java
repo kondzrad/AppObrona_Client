@@ -10,7 +10,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
 
 @SpringBootApplication
-public class AppObronaClientApplication extends Application {
+public class AppObronaClient extends Application {
     private ConfigurableApplicationContext springContext; //do wstrzykiwania zaleznosci
     private Parent rootNode;
 
@@ -29,7 +29,7 @@ public class AppObronaClientApplication extends Application {
 
     @Override
     public void init() throws Exception {
-        springContext = SpringApplication.run(AppObronaClientApplication.class); //przypisanie contextowi start aplikacji
+        springContext = SpringApplication.run(AppObronaClient.class); //przypisanie contextowi start aplikacji
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/MainWindow.fxml"));
         fxmlLoader.setControllerFactory(springContext::getBean);//kontrolery za obluge widokow beda tworzone przez
         // spring kontext

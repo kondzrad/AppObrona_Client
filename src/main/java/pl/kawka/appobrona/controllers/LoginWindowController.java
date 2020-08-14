@@ -1,12 +1,16 @@
 package pl.kawka.appobrona.controllers;
 
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.*;
 import javafx.scene.layout.Pane;
 import org.json.simple.JSONObject;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
+import pl.kawka.appobrona.AppObronaClient;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -21,6 +25,8 @@ public class LoginWindowController {
 
     private MainWindowController mainWindowController; //pole do ustawienia Set
 
+    private static final Logger logger = LoggerFactory.getLogger(AppObronaClient.class);
+
     public LoginWindowController() {
         System.out.println("Jestem kontrolerem w kontruktorze");
     }
@@ -29,8 +35,8 @@ public class LoginWindowController {
     private TextField fieldLogin, fieldHaslo;
     @FXML
     private Label statusLogowania;
-    @FXML
-    private Button przyciskLogowania;
+    //@FXML  //zakomentowane bo nie wykonuje na nim dodatkowych rzeczy
+    //private Button przyciskLogowania;
 
 
     @FXML
@@ -47,7 +53,7 @@ public class LoginWindowController {
         System.out.println(json);
 
         try {
-            URL url = new URL("http://localhost:8080/api/employee2");
+            URL url = new URL("http://localhost:8080/api/login");
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
             conn.setUseCaches(false);
             conn.setDoInput(true);
@@ -66,17 +72,18 @@ public class LoginWindowController {
                 System.out.println("ok_pracownik");
                 statusLogowania.setText("Jest git!");
                 wczytanieEmployeeWindow(); //wczytanie widoku pracownika po poprawnym zalogowaniu
-                                             //zakomentowane poniewaz nie dziala nakladanie sie widokow
             } else if (wczytany.equalsIgnoreCase("OKadmin")) {
                 System.out.println("ok_admin");
                 statusLogowania.setText("Jest git!");
                 wczytanieAdminWindow();
             } else {
                 statusLogowania.setText("Błędne logowanie!");
+                //logger.error("Błędne logowanie");
             }
 
         } catch (Exception ex) {
             ex.printStackTrace();
+            //logger.error("Loading Application Error.", ex);
         }
 
     }
@@ -93,6 +100,7 @@ public class LoginWindowController {
         EmployeeWindowController employeeWindowController = loader.getController();
         employeeWindowController.setMainWindowController(mainWindowController);
         mainWindowController.setScreen(pane);
+        logger.info("Wczytanie EmployeeWindow");
     }
 
     @FXML
@@ -123,6 +131,11 @@ public class LoginWindowController {
         testC.setMainWindowController(mainWindowController);
         mainWindowController.setScreen(pane);
 
+    }
+
+    @FXML
+    public void exit(){
+        Platform.exit();
     }
 
 
