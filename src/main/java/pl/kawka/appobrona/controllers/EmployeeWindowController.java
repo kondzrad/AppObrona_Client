@@ -34,7 +34,7 @@ public class EmployeeWindowController {
 
         System.out.println("Wejscie do klientow");
         try {
-            URL url = new URL("http://localhost:8080/api/klienci");
+            URL url = new URL("http://localhost:8080/api/customer");
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
             conn.setUseCaches(false);
             conn.setDoInput(true);

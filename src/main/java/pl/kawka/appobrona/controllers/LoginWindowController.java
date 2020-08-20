@@ -53,7 +53,7 @@ public class LoginWindowController {
         System.out.println(json);
 
         try {
-            URL url = new URL("http://localhost:8080/api/login");
+            URL url = new URL("http://localhost:8080/api/employee/login");
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
             conn.setUseCaches(false);
             conn.setDoInput(true);
