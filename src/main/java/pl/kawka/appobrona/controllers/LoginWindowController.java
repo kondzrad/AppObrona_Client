@@ -61,7 +61,7 @@ public class LoginWindowController {
             conn.setDoOutput(true);
             conn.setRequestMethod("POST"); //zeby wyslac jakies obiekt JSON chyba nie da sie z GET bo probowalem
             OutputStreamWriter wr = new OutputStreamWriter(conn.getOutputStream());
-            wr.write(json.toString());
+            wr.write(json.toString());  //wyslanie JSON
             wr.flush();
             wr.flush();
             wr.close();

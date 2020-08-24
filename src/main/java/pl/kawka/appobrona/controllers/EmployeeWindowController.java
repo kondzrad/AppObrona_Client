@@ -4,9 +4,13 @@ package pl.kawka.appobrona.controllers;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Stage;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -14,7 +18,9 @@ import org.springframework.stereotype.Controller;
 import pl.kawka.appobrona.model.Customer;
 
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
@@ -32,7 +38,7 @@ public class EmployeeWindowController {
     @FXML
     public void readDatabase() {
 
-        System.out.println("Wejscie do klientow");
+        System.out.println("Wczytanie bazy danych klientow");
         try {
             URL url = new URL("http://localhost:8080/api/customer");
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
@@ -50,8 +56,8 @@ public class EmployeeWindowController {
             for (Object object : jSONArray) {
                 JSONObject jSONObject = (JSONObject) parser.parse(object.toString());
                 System.out.println("jSONObject : " + jSONObject.toJSONString());
-                masterData.add(new Customer(Integer.parseInt(
-                        jSONObject.get("id").toString()),
+                masterData.add(new Customer(
+                        Integer.parseInt(jSONObject.get("id").toString()),
                         jSONObject.get("firstName").toString(),
                         jSONObject.get("lastName").toString(),
                         jSONObject.get("town").toString(),
@@ -77,6 +83,23 @@ public class EmployeeWindowController {
         }
 
     }
+
+    @FXML
+    public void actionOpenCreateCustomerWindow(){
+        Parent root = null;
+        Stage secondStage = new Stage();
+        try{
+            root = FXMLLoader.load(getClass().getResource("/fxml/CreateCustomerWindow.fxml"));
+        } catch(IOException ex){
+
+        }
+        secondStage.setScene(new Scene(root, 400, 400));
+        secondStage.setMinWidth(400);
+        secondStage.setMinHeight(400);
+        secondStage.setTitle("Stwórz klienta");
+        secondStage.show();
+    }
+
 
     @FXML
     public void back() { //nazwa onAction przycisku

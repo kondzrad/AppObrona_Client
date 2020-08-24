@@ -12,7 +12,7 @@ import java.io.IOException;
 public class MainWindowController { //kontroler glownego pustego okna
 
     @FXML
-    private AnchorPane mainStackPane;
+    private AnchorPane mainStackPane; //musi byc przypisany fx:id="mainStackPane"
 
     @FXML
     public void initialize() { //metoda wywolywana zaraz po kontruktorze
