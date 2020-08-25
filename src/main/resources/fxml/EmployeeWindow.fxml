@@ -4,6 +4,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
 <AnchorPane prefHeight="700.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pl.kawka.appobrona.controllers.EmployeeWindowController">
@@ -11,10 +12,23 @@
       <Label layoutX="300.0" layoutY="10.0" text="EmployeeWindow" />
       <Button layoutX="620.0" layoutY="650.0" mnemonicParsing="false" onAction="#back" text="Wstecz" />
       <Button layoutX="30.0" layoutY="45.0" mnemonicParsing="false" onAction="#readDatabase" text="Wczytaj cała baze" />
-      <Button layoutX="175.0" layoutY="45.0" mnemonicParsing="false" onAction="#actionOpenCreateCustomerWindow" text="Stwórz klienta" />
-      <Button layoutX="300.0" layoutY="45.0" mnemonicParsing="false" text="Wczytaj klientów" />
+      <Button layoutX="316.0" layoutY="45.0" mnemonicParsing="false" onAction="#actionOpenCreateCustomerWindow" text="Stwórz klienta" />
+      <Button layoutX="30.0" layoutY="110.0" mnemonicParsing="false" onAction="#actionReadCustomers" prefHeight="25.0" prefWidth="110.0" text="Wczytaj klientów" />
       <Button layoutX="445.0" layoutY="45.0" mnemonicParsing="false" text="Modyfikuj klienta" />
       <Button layoutX="590.0" layoutY="45.0" mnemonicParsing="false" text="Usuń klienta" />
+
+
+       <TextField fx:id="idFieldId" layoutX="30.0" layoutY="160.0" prefWidth="110.0" promptText="ID" />
+       <TextField fx:id="idFieldFirstName" layoutX="160.0" layoutY="110.0" prefWidth="110.0" promptText="Imie" text="Marcin" />
+       <TextField fx:id="idFieldLastName" layoutX="160.0" layoutY="160.0" prefWidth="110.0" promptText="Nazwisko" />
+       <TextField fx:id="idFieldTown" layoutX="290.0" layoutY="110.0" prefWidth="110.0" promptText="Miasto" />
+       <TextField fx:id="idFieldStreet" layoutX="290.0" layoutY="160.0" prefWidth="110.0" promptText="Ulica" />
+       <TextField fx:id="idFieldPostcode" layoutX="420.0" layoutY="110.0" prefWidth="110.0" promptText="Kod pocztowy" />
+       <TextField fx:id="idFieldTelephoneNumber" layoutX="420.0" layoutY="160.0" prefWidth="110.0" promptText="Numer telefonu" />
+       <TextField fx:id="idFieldNip" layoutX="550.0" layoutY="110.0" prefWidth="110.0" promptText="NIP" />
+       <TextField fx:id="idFieldDateAdded" layoutX="550.0" layoutY="160.0" prefWidth="110.0" promptText="Data dodania" text="Poprawic kod serv" />
+
+
       <TableView fx:id="customerTableView" layoutX="18.0" layoutY="204.0" prefHeight="415.0" prefWidth="663.0">
         <columns>
           <TableColumn fx:id="id" prefWidth="30.0" text="ID" />

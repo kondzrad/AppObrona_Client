@@ -2,7 +2,9 @@ package pl.kawka.appobrona.controllers;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
+import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
 import org.springframework.stereotype.Controller;
 
 import java.io.BufferedReader;
@@ -12,20 +14,23 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 
 @Controller
-public class CreateCustomerController {
+public class ReadCustomerWindowController {
 
     @FXML
-    private TextField idFieldFirstName, idFieldLastName, idFieldTown, idFieldStreet, idFieldPostcode,
-    idFieldTelephoneNumber, idFieldNip;
+    private TextField idFieldId, idFieldFirstName, idFieldLastName, idFieldTown, idFieldStreet, idFieldPostcode,
+            idFieldTelephoneNumber, idFieldNip, idFieldDateAdded;
 
+    JSONArray jSONArray = null;
 
     @FXML
-    public void actionCreateCustomer(){
+    public void actionReadCustomers(){
 
-        System.out.println("Wchodze do stworzenia klienta");
+
+
+        System.out.println("Wchodze do wczytania klientow");
 
         JSONObject json = new JSONObject();
-        json.put("id", 20);
+        json.put("id", 0);
         json.put("firstName", idFieldFirstName.getText());
         json.put("lastName", idFieldLastName.getText());
         json.put("town", idFieldTown.getText());
@@ -38,7 +43,7 @@ public class CreateCustomerController {
         System.out.println(json);
 
         try {
-            URL url = new URL("http://localhost:8080/api/customer/create");
+            URL url = new URL("http://localhost:8080/api/customer/read");
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
             conn.setUseCaches(false);
             conn.setDoInput(true);
@@ -51,25 +56,29 @@ public class CreateCustomerController {
             wr.flush();
             wr.close();
             conn.getInputStream();
-            /*BufferedReader in = new BufferedReader(new InputStreamReader(conn.getInputStream()));
-            String wczytany = in.readLine();
-            if (wczytany.equalsIgnoreCase("OKpracownik")) {
-                System.out.println("ok_pracownik");
-                statusLogowania.setText("Jest git!");
-                wczytanieEmployeeWindow(); //wczytanie widoku pracownika po poprawnym zalogowaniu
-            } else if (wczytany.equalsIgnoreCase("OKadmin")) {
-                System.out.println("ok_admin");
-                statusLogowania.setText("Jest git!");
-                wczytanieAdminWindow();
-            } else {
-                statusLogowania.setText("Błędne logowanie!");
-                //logger.error("Błędne logowanie");
-            }*/
+
+            BufferedReader in = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+            System.out.println("poszłooooooooooooooooo");
+            JSONParser parser = new JSONParser();
+            jSONArray = (JSONArray) parser.parse(in.readLine());
+
+            System.out.println("to ta lista: "+ jSONArray);
+
+            EmployeeWindowController employeeWindowController = new EmployeeWindowController();
+            //employeeWindowController.xxxx(jSONArray);
 
         } catch (Exception ex) {
             ex.printStackTrace();
             //logger.error("Loading Application Error.", ex);
         }
+
     }
+
+
+   /* public JSONArray getjSONArray() {
+        System.out.println("to ta lista2: "+ jSONArray);
+        return jSONArray;
+    }*/
+
 
 }
