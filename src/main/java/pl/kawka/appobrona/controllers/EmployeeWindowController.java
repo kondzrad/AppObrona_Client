@@ -108,10 +108,11 @@ public class EmployeeWindowController {
         secondStage.setMinHeight(400);
         secondStage.setTitle("Stwórz klienta");
         secondStage.show();
+
     }
 
 
-    @FXML
+    @FXML//to juz usuniete
     public void actionOpenReadCustomerWindow(){
         Parent root = null;
         Stage secondStage = new Stage();
@@ -249,6 +250,49 @@ public class EmployeeWindowController {
         }
     }
 
+
+    @FXML
+    public void actionDeleteCustomer(){
+
+        Customer selectedPerson = null;
+        /* customerTableView.requestFocus();
+        customerTableView.getSelectionModel().select(2);
+        System.out.println(customerTableView.getFocusModel().focus(2));*/
+        if (customerTableView.getSelectionModel().getSelectedItem() != null) {
+            selectedPerson = customerTableView.getSelectionModel().getSelectedItem();
+            //nameTextField.setText(selectedPerson.getName());
+            //addressTextField.setText(selectedPerson.getAddress());
+            System.out.println(selectedPerson.getId());
+        }
+
+        JSONObject json = new JSONObject();
+        //json.put("login", fieldLogin.getText());
+        json.put("id", selectedPerson.getId().toString());
+
+        System.out.println(json);
+
+        try {
+        URL url = new URL("http://localhost:8080/api/customer/delete");
+        HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+        conn.setUseCaches(false);
+        conn.setDoInput(true);
+        conn.setRequestProperty("Content-Type", "application/json");
+        conn.setDoOutput(true);
+        conn.setRequestMethod("POST"); //zeby wyslac jakies obiekt JSON chyba nie da sie z GET bo probowalem
+        OutputStreamWriter wr = new OutputStreamWriter(conn.getOutputStream());
+        wr.write(json.toString());  //wyslanie JSON
+        wr.flush();
+        wr.flush();
+        wr.close();
+        conn.getInputStream();
+
+        readDatabase();
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            //logger.error("Loading Application Error.", ex);
+        }
+
+    }
 
     @FXML
     public void back() { //nazwa onAction przycisku

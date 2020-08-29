@@ -51,6 +51,8 @@ public class CreateCustomerController {
             wr.flush();
             wr.close();
             conn.getInputStream();
+
+
             /*BufferedReader in = new BufferedReader(new InputStreamReader(conn.getInputStream()));
             String wczytany = in.readLine();
             if (wczytany.equalsIgnoreCase("OKpracownik")) {
