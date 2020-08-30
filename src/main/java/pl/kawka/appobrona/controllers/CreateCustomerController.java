@@ -25,7 +25,7 @@ public class CreateCustomerController {
         System.out.println("Wchodze do stworzenia klienta");
 
         JSONObject json = new JSONObject();
-        json.put("id", 20);
+        json.put("id", 0);
         json.put("firstName", idFieldFirstName.getText());
         json.put("lastName", idFieldLastName.getText());
         json.put("town", idFieldTown.getText());

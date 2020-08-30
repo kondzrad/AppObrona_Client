@@ -3,9 +3,13 @@ package pl.kawka.appobrona.controllers;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Stage;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -14,6 +18,7 @@ import pl.kawka.appobrona.model.Customer;
 import pl.kawka.appobrona.model.Employee;
 
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
@@ -74,6 +79,21 @@ public class AdminWindowController {
 
     }
 
+    @FXML
+    public void actionOpenCreateEmployeeWindow(){
+        Parent root = null;
+        Stage secondStage = new Stage();
+        try{
+            root = FXMLLoader.load(getClass().getResource("/fxml/CreateEmployeeWindow.fxml"));
+        } catch(IOException ex){
+
+        }
+        secondStage.setScene(new Scene(root, 400, 400));
+        secondStage.setMinWidth(400);
+        secondStage.setMinHeight(400);
+        secondStage.setTitle("Stwórz pracownika");
+        secondStage.show();
+    }
 
     @FXML
     public void back(){ //nazwa onAction przycisku
