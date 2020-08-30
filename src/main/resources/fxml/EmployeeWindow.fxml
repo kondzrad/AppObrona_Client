@@ -14,7 +14,7 @@
       <Button layoutX="30.0" layoutY="45.0" mnemonicParsing="false" onAction="#readDatabase" text="Wczytaj cała baze" />
       <Button layoutX="316.0" layoutY="45.0" mnemonicParsing="false" onAction="#actionOpenCreateCustomerWindow" text="Stwórz klienta" />
       <Button layoutX="30.0" layoutY="110.0" mnemonicParsing="false" onAction="#actionReadCustomers" prefHeight="25.0" prefWidth="110.0" text="Wczytaj klientów" />
-      <Button layoutX="445.0" layoutY="45.0" mnemonicParsing="false" text="Modyfikuj klienta" />
+      <Button layoutX="445.0" layoutY="45.0" mnemonicParsing="false" onAction="#actionOpenUpdateCustomerWindow" text="Modyfikuj klienta" />
       <Button layoutX="590.0" layoutY="45.0" mnemonicParsing="false" onAction="#actionDeleteCustomer" text="Usuń klienta" />
 
 

@@ -3,7 +3,6 @@ package pl.kawka.appobrona.controllers;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -30,6 +29,9 @@ import java.net.URL;
 public class EmployeeWindowController {
 
     private MainWindowController mainWindowController;
+
+    Integer numberIdSelectedTableRow=0;
+    Customer testowyConsumer;
 
     ///////////
     @FXML
@@ -94,6 +96,8 @@ public class EmployeeWindowController {
 
     }
 
+
+
     @FXML
     public void actionOpenCreateCustomerWindow(){
         Parent root = null;
@@ -108,7 +112,6 @@ public class EmployeeWindowController {
         secondStage.setMinHeight(400);
         secondStage.setTitle("Stwórz klienta");
         secondStage.show();
-
     }
 
 
@@ -250,6 +253,32 @@ public class EmployeeWindowController {
         }
     }
 
+    @FXML
+    public void actionOpenUpdateCustomerWindow(){
+
+        Stage secondStage = new Stage();
+        FXMLLoader loader = null;
+        try{
+            loader = new FXMLLoader(getClass().getResource("/fxml/UpdateCustomerWindow.fxml"));
+            secondStage.setScene(new Scene(loader.load(), 400, 400));
+        } catch(IOException ex){
+        }
+        secondStage.setMinWidth(400);
+        secondStage.setMinHeight(400);
+        secondStage.setTitle("Modyfikacja klienta");
+
+        UpdateCustomerController controller = loader.<UpdateCustomerController>getController();
+
+        Customer customerSelectedInTable = null;
+        if (customerTableView.getSelectionModel().getSelectedItem() != null) {
+            customerSelectedInTable = customerTableView.getSelectionModel().getSelectedItem();
+            System.out.println("ID wybranego klienta: " + customerSelectedInTable.getId());
+            controller.initData(customerSelectedInTable);
+            secondStage.show();
+        }else {
+            System.out.println("nie wybrano danych");
+        }
+    }
 
     @FXML
     public void actionDeleteCustomer(){
