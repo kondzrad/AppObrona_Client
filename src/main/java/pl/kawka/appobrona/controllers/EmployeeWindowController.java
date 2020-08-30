@@ -141,49 +141,6 @@ public class EmployeeWindowController {
 
     }
 
-    /*@FXML
-    public void xxxx(JSONArray jSONArray){
-        try {
-
-            System.out.println("Odczyt jsonArray jako wynik wyszukiwania: "+jSONArray);
-
-
-            JSONParser parser = new JSONParser();
-            ObservableList<Customer> masterData = FXCollections.observableArrayList();
-            for (Object object : jSONArray) {
-                JSONObject jSONObject = (JSONObject) parser.parse(object.toString());
-                System.out.println("jSONObject : " + jSONObject.toJSONString());
-                masterData.add(new Customer(
-                        Integer.parseInt(jSONObject.get("id").toString()),
-                        jSONObject.get("firstName").toString(),
-                        jSONObject.get("lastName").toString(),
-                        jSONObject.get("town").toString(),
-                        jSONObject.get("street").toString(),
-                        jSONObject.get("postcode").toString(),
-                        jSONObject.get("telephoneNumber").toString(),
-                        jSONObject.get("nip").toString(),
-                        jSONObject.get("dateAdded").toString()));
-
-
-                System.out.println("nic1");
-                id.setCellValueFactory(new PropertyValueFactory<Customer, String>("id"));
-                System.out.println("nic2");
-                firstName.setCellValueFactory(new PropertyValueFactory<Customer, String>("firstName"));
-                System.out.println("nic3");
-                lastName.setCellValueFactory(new PropertyValueFactory<Customer, String>("lastName"));
-                town.setCellValueFactory(new PropertyValueFactory<Customer, String>("town"));
-                street.setCellValueFactory(new PropertyValueFactory<Customer, String>("street"));
-                postcode.setCellValueFactory(new PropertyValueFactory<Customer, String>("postcode"));
-                telephoneNumber.setCellValueFactory(new PropertyValueFactory<Customer, String>("telephoneNumber"));
-                nip.setCellValueFactory(new PropertyValueFactory<Customer, String>("nip"));
-                dateAdded.setCellValueFactory(new PropertyValueFactory<Customer, String>("dateAdded"));
-            }
-            customerTableView.setItems(masterData);
-
-        } catch (Exception ex) {
-            ex.printStackTrace();
-        }
-    }*/
 
     @FXML
     public void actionReadCustomers(){
