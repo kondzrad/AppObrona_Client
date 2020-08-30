@@ -1,14 +1,14 @@
 package pl.kawka.appobrona.model;
 
-public class EmployeeLogin {  //odwzorowanie modelu z Serwera
+public class Employee {  //odwzorowanie modelu z Serwera
 
     Integer id;
-    String first_name, last_name, status, login, password;
+    String firstName, lastName, status, login, password;
 
-    public EmployeeLogin(Integer id, String first_name, String last_name, String status, String login, String password) {
+    public Employee(Integer id, String firstName, String lastName, String status, String login, String password) {
         this.id = id;
-        this.first_name = first_name;
-        this.last_name = last_name;
+        this.firstName = firstName;
+        this.lastName = lastName;
         this.status = status;
         this.login = login;
         this.password = password;
@@ -22,20 +22,20 @@ public class EmployeeLogin {  //odwzorowanie modelu z Serwera
         this.id = id;
     }
 
-    public String getFirst_name() {
-        return first_name;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public void setFirst_name(String first_name) {
-        this.first_name = first_name;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
 
-    public String getLast_name() {
-        return last_name;
+    public String getLastName() {
+        return lastName;
     }
 
-    public void setLast_name(String last_name) {
-        this.last_name = last_name;
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
     public String getStatus() {
