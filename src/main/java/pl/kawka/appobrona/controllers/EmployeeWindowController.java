@@ -7,6 +7,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -24,6 +25,8 @@ import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 
 @Controller
 public class EmployeeWindowController {
@@ -37,6 +40,9 @@ public class EmployeeWindowController {
     @FXML
     private TextField idFieldId, idFieldFirstName, idFieldLastName, idFieldTown, idFieldStreet, idFieldPostcode,
             idFieldTelephoneNumber, idFieldNip, idFieldDateAdded;
+
+    @FXML
+    private Label lblBadDateAdded;
 
     ///////////
 
@@ -196,7 +202,22 @@ public class EmployeeWindowController {
         json.put("postcode", idFieldPostcode.getText());
         json.put("telephoneNumber", idFieldTelephoneNumber.getText());
         json.put("nip", idFieldNip.getText());
-        json.put("dateAdded", idFieldDateAdded.getText());
+
+        lblBadDateAdded.setText("");
+        if(idFieldDateAdded.getText().isEmpty()){
+            json.put("dateAdded", idFieldDateAdded.getText());
+            System.out.println("pusty");
+        } else {
+            try {
+                new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(idFieldDateAdded.getText());
+                json.put("dateAdded", idFieldDateAdded.getText());
+            } catch (ParseException e) {
+                System.out.println("zła data");
+                //e.printStackTrace();
+                lblBadDateAdded.setText("Zła data!");
+                json.put("dateAdded", "");
+            }
+        }
 
         System.out.println(json);
 
@@ -248,10 +269,13 @@ public class EmployeeWindowController {
             customerTableView.setItems(masterData);
 
         } catch (Exception ex) {
+            lblBadDateAdded.setText("Zła data!");
             ex.printStackTrace();
             //logger.error("Loading Application Error.", ex);
         }
     }
+
+
 
     @FXML
     public void actionOpenUpdateCustomerWindow(){
