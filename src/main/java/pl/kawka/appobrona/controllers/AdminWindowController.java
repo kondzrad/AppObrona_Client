@@ -198,7 +198,39 @@ public class AdminWindowController {
 
     }
 
+    @FXML
+    public void actionDeleteEmployee(){
+        Employee selectedPerson = null;
+        if (employeeTableView.getSelectionModel().getSelectedItem() != null) {
+            selectedPerson = employeeTableView.getSelectionModel().getSelectedItem();
+            System.out.println(selectedPerson.getId());
+        }
 
+        JSONObject json = new JSONObject();
+        json.put("id", selectedPerson.getId().toString());
+        System.out.println(json);
+
+        try {
+            URL url = new URL("http://localhost:8080/api/employee/delete");
+            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+            conn.setUseCaches(false);
+            conn.setDoInput(true);
+            conn.setRequestProperty("Content-Type", "application/json");
+            conn.setDoOutput(true);
+            conn.setRequestMethod("POST"); //zeby wyslac jakies obiekt JSON chyba nie da sie z GET bo probowalem
+            OutputStreamWriter wr = new OutputStreamWriter(conn.getOutputStream());
+            wr.write(json.toString());  //wyslanie JSON
+            wr.flush();
+            wr.flush();
+            wr.close();
+            conn.getInputStream();
+
+            readDatabase();
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            //logger.error("Loading Application Error.", ex);
+        }
+    }
 
     @FXML
     public void back(){ //nazwa onAction przycisku
