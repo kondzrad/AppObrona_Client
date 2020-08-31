@@ -171,6 +171,36 @@ public class AdminWindowController {
     }
 
     @FXML
+    public void actionOpenUpdateEmployeeWindow(){
+
+        Stage secondStage = new Stage();
+        FXMLLoader loader = null;
+        try{
+            loader = new FXMLLoader(getClass().getResource("/fxml/UpdateEmployeeWindow.fxml"));
+            secondStage.setScene(new Scene(loader.load(), 400, 400));
+        } catch(IOException ex){
+        }
+        secondStage.setMinWidth(400);
+        secondStage.setMinHeight(400);
+        secondStage.setTitle("Modyfikacja pracownika");
+
+        UpdateEmployeeController controller = loader.<UpdateEmployeeController>getController();
+
+        Employee employeeSelectedInTable = null;
+        if (employeeTableView.getSelectionModel().getSelectedItem() != null) {
+            employeeSelectedInTable = employeeTableView.getSelectionModel().getSelectedItem();
+            System.out.println("ID wybranego pracownika: " + employeeSelectedInTable.getId());
+            controller.initData(employeeSelectedInTable);
+            secondStage.show();
+        }else {
+            System.out.println("nie wybrano danych");
+        }
+
+    }
+
+
+
+    @FXML
     public void back(){ //nazwa onAction przycisku
         mainWindowController.loadMenuScreen();
     }
