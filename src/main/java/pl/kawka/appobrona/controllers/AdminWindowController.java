@@ -6,6 +6,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -14,7 +15,10 @@ import javafx.stage.Stage;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
+import pl.kawka.appobrona.AppObronaClient;
 import pl.kawka.appobrona.model.Employee;
 
 import java.io.BufferedReader;
@@ -26,6 +30,8 @@ import java.net.URL;
 
 @Controller
 public class AdminWindowController {
+
+    private static final Logger logger = LoggerFactory.getLogger(AppObronaClient.class);
 
     private MainWindowController mainWindowController;
 
@@ -39,9 +45,12 @@ public class AdminWindowController {
     private TextField idFieldId, idFieldFirstName, idFieldLastName, idFieldStatus, idFieldLogin, idFieldPassword;
 
     @FXML
-    public void readDatabase() {
+    private Label fxidLblUpdateEmployee;
 
-        System.out.println("Wczytanie bazy danych pracowników");
+    @FXML
+    public void readDatabase() {
+        System.out.println("********** Wczytanie bazy danych pracowników **********");
+
         try {
             URL url = new URL("http://localhost:8080/api/employee");
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
@@ -58,7 +67,7 @@ public class AdminWindowController {
             ObservableList<Employee> masterData = FXCollections.observableArrayList();
             for (Object object : jSONArray) {
                 JSONObject jSONObject = (JSONObject) parser.parse(object.toString());
-                System.out.println("jSONObject : " + jSONObject.toJSONString());
+                //System.out.println("jSONObject : " + jSONObject.toJSONString());
                 masterData.add(new Employee(
                         Integer.parseInt(jSONObject.get("id").toString()),
                         jSONObject.get("firstName").toString(),
@@ -94,12 +103,12 @@ public class AdminWindowController {
         secondStage.setMinHeight(400);
         secondStage.setTitle("Stwórz pracownika");
         secondStage.show();
+        logger.info("Wczytanie CreateEmployeeWindow");
     }
 
     @FXML
     public void actionReadCustomers() {
-
-        System.out.println("Wchodze do wczytania pracowników z okna AdminWindow");
+        System.out.println("********** Wczytanie wyszukanych pracowników **********");
 
         JSONObject json = new JSONObject();
         try {
@@ -113,7 +122,7 @@ public class AdminWindowController {
         json.put("login", idFieldLogin.getText());
         json.put("password", idFieldPassword.getText());
 
-        System.out.println(json);
+        //System.out.println(json);
 
         try {
             URL url = new URL("http://localhost:8080/api/employee/read");
@@ -137,7 +146,7 @@ public class AdminWindowController {
             ObservableList<Employee> masterData = FXCollections.observableArrayList();
             for (Object object : jSONArray) {
                 JSONObject jSONObject = (JSONObject) parser.parse(object.toString());
-                System.out.println("jSONObject : " + jSONObject.toJSONString());
+                //System.out.println("jSONObject : " + jSONObject.toJSONString());
                 masterData.add(new Employee(
                         Integer.parseInt(jSONObject.get("id").toString()),
                         jSONObject.get("firstName").toString(),
@@ -175,31 +184,36 @@ public class AdminWindowController {
         secondStage.setMinHeight(400);
         secondStage.setTitle("Modyfikacja pracownika");
 
-        UpdateEmployeeController controller = loader.<UpdateEmployeeController>getController();
+        EmployeeUpdateController controller = loader.<EmployeeUpdateController>getController();
 
+        fxidLblUpdateEmployee.setText("");
         Employee employeeSelectedInTable = null;
         if (employeeTableView.getSelectionModel().getSelectedItem() != null) {
             employeeSelectedInTable = employeeTableView.getSelectionModel().getSelectedItem();
-            System.out.println("ID wybranego pracownika: " + employeeSelectedInTable.getId());
+            //System.out.println("ID wybranego pracownika: " + employeeSelectedInTable.getId());
             controller.initData(employeeSelectedInTable); //przeslanie danych do innego okna
             secondStage.show();
         } else {
-            System.out.println("Nie wybrano pracownika w tabeli");
+            System.out.println("Nie wybrano pracownika w tabeli do modyfikacji");
+            fxidLblUpdateEmployee.setText("Nie wybrano pracownika w tabeli!");
         }
+        logger.info("Wczytanie UpdateEmployeeWindow");
     }
 
     @FXML
     public void actionDeleteEmployee() {
+        System.out.println("********** Usunięcie pracownika **********");
 
-        Employee selectedPerson = null;
+        Employee selectedEmployee = null;
         if (employeeTableView.getSelectionModel().getSelectedItem() != null) {
-            selectedPerson = employeeTableView.getSelectionModel().getSelectedItem();
-            System.out.println(selectedPerson.getId());
+            selectedEmployee = employeeTableView.getSelectionModel().getSelectedItem();
+            //System.out.println(selectedEmployee.getId());
         }
 
+        System.out.println("ID wybranego klienta do usunięcia: " + selectedEmployee.getId());
         JSONObject json = new JSONObject();
-        json.put("id", selectedPerson.getId().toString());
-        System.out.println(json);
+        json.put("id", selectedEmployee.getId().toString());
+        //System.out.println(json);
 
         try {
             URL url = new URL("http://localhost:8080/api/employee/delete");

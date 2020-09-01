@@ -28,7 +28,7 @@ public class LoginWindowController {
     private static final Logger logger = LoggerFactory.getLogger(AppObronaClient.class);
 
     public LoginWindowController() {
-        System.out.println("Jestem kontrolerem w kontruktorze");
+        System.out.println("********** Załadowanie okna logowania **********");
     }
 
     @FXML
@@ -43,11 +43,13 @@ public class LoginWindowController {
     @FXML
     private void akcjaLogowania(ActionEvent event) {
 
+        System.out.println("********** Logowanie **********");
+
         JSONObject json = new JSONObject();
         json.put("login", fieldLogin.getText());
         json.put("password", fieldHaslo.getText());
 
-        System.out.println(json);
+        //System.out.println(json);
 
         try {
             URL url = new URL("http://localhost:8080/api/employee/login");
@@ -66,11 +68,11 @@ public class LoginWindowController {
             BufferedReader in = new BufferedReader(new InputStreamReader(conn.getInputStream()));
             String readWhoLoggedIn = in.readLine();
             if (readWhoLoggedIn.equalsIgnoreCase("OKpracownik")) {
-                System.out.println("ok_pracownik");
+                System.out.println("Zalogowano pracownika");
                 statusLogowania.setText("Zalogowano pracownika!");
                 wczytanieEmployeeWindow(); //wczytanie widoku pracownika po poprawnym zalogowaniu
             } else if (readWhoLoggedIn.equalsIgnoreCase("OKadmin")) {
-                System.out.println("ok_admin");
+                System.out.println("Zalogowano admina");
                 statusLogowania.setText("Zalogowano admina!");
                 wczytanieAdminWindow();
             } else {
@@ -111,6 +113,7 @@ public class LoginWindowController {
         AdminWindowController adminWindowController = loader.getController();
         adminWindowController.setMainWindowController(mainWindowController);
         mainWindowController.setScreen(pane);
+        logger.info("Wczytanie AdminWindow");
     }
 
     @FXML

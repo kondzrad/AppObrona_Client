@@ -10,7 +10,7 @@ import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-public class UpdateEmployeeController {
+public class EmployeeUpdateController {
 
     @FXML
     private Label fxidLabelId;
@@ -18,12 +18,12 @@ public class UpdateEmployeeController {
     @FXML
     private TextField idFieldFirstName, idFieldLastName, idFieldStatus, idFieldLogin, idFieldPassword;
 
-    Integer idWybranegoPracownika;
+    Integer idSelectedEmployee;
 
 
     void initData(Employee employee) {
-        idWybranegoPracownika = employee.getId();
-        fxidLabelId.setText("ID wybranego klienta: " + idWybranegoPracownika);
+        idSelectedEmployee = employee.getId();
+        fxidLabelId.setText("ID wybranego klienta: " + idSelectedEmployee);
         idFieldFirstName.setText(employee.getFirstName());
         idFieldLastName.setText(employee.getLastName());
         idFieldStatus.setText(employee.getStatus());
@@ -34,17 +34,18 @@ public class UpdateEmployeeController {
     @FXML
     public void actionUpdateEmployee() {
 
-        System.out.println("Wchodze do modyfikacja pracownika");
+        System.out.println("********** Modyfikowanie pracownika **********");
+        System.out.println("ID wybranego klienta do modyfikacji: " + idSelectedEmployee);
 
         JSONObject json = new JSONObject();
-        json.put("id", idWybranegoPracownika);
+        json.put("id", idSelectedEmployee);
         json.put("firstName", idFieldFirstName.getText());
         json.put("lastName", idFieldLastName.getText());
         json.put("status", idFieldStatus.getText());
         json.put("login", idFieldLogin.getText());
         json.put("password", idFieldPassword.getText());
 
-        System.out.println(json);
+        //System.out.println(json);
 
         try {
             URL url = new URL("http://localhost:8080/api/employee/update");

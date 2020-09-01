@@ -16,7 +16,10 @@ import javafx.stage.Stage;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
+import pl.kawka.appobrona.AppObronaClient;
 import pl.kawka.appobrona.model.Customer;
 
 import java.io.BufferedReader;
@@ -31,6 +34,8 @@ import java.text.SimpleDateFormat;
 @Controller
 public class EmployeeWindowController {
 
+    private static final Logger logger = LoggerFactory.getLogger(AppObronaClient.class);
+
     private MainWindowController mainWindowController;
 
     @FXML
@@ -38,7 +43,7 @@ public class EmployeeWindowController {
             idFieldTelephoneNumber, idFieldNip, idFieldDateAdded;
 
     @FXML
-    private Label lblBadDateAdded;
+    private Label lblBadDateAdded, fxidLblUpdateCustomer;
 
     @FXML
     private TableView<Customer> customerTableView;
@@ -49,7 +54,7 @@ public class EmployeeWindowController {
     @FXML
     public void readDatabase() {
 
-        System.out.println("Wczytanie bazy danych klientow");
+        System.out.println("********** Wczytanie bazy danych klientów **********");
         try {
             URL url = new URL("http://localhost:8080/api/customer");
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
@@ -65,7 +70,7 @@ public class EmployeeWindowController {
             ObservableList<Customer> masterData = FXCollections.observableArrayList();
             for (Object object : jSONArray) {
                 JSONObject jSONObject = (JSONObject) parser.parse(object.toString());
-                System.out.println("jSONObject : " + jSONObject.toJSONString());
+                //System.out.println("jSONObject : " + jSONObject.toJSONString());
                 masterData.add(new Customer(
                         Integer.parseInt(jSONObject.get("id").toString()),
                         jSONObject.get("firstName").toString(),
@@ -107,11 +112,12 @@ public class EmployeeWindowController {
         secondStage.setMinHeight(400);
         secondStage.setTitle("Stwórz klienta");
         secondStage.show();
+        logger.info("Wczytanie CreateCustomerWindow");
     }
 
     @FXML
     public void actionReadCustomers() {
-        System.out.println("Wchodze do wczytania klientow z okna employee");
+        System.out.println("********** Wczytanie wyszukanych klientów **********");
 
         JSONObject json = new JSONObject();
         try {
@@ -130,7 +136,7 @@ public class EmployeeWindowController {
         lblBadDateAdded.setText("");
         if (idFieldDateAdded.getText().isEmpty()) {
             json.put("dateAdded", idFieldDateAdded.getText());
-            System.out.println("pusty");
+            //System.out.println("pusty");
         } else {
             try {
                 new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(idFieldDateAdded.getText());
@@ -143,7 +149,7 @@ public class EmployeeWindowController {
             }
         }
 
-        System.out.println(json);
+        //System.out.println(json);
 
         try {
             URL url = new URL("http://localhost:8080/api/customer/read");
@@ -167,7 +173,7 @@ public class EmployeeWindowController {
             ObservableList<Customer> masterData = FXCollections.observableArrayList();
             for (Object object : jSONArray) {
                 JSONObject jSONObject = (JSONObject) parser.parse(object.toString());
-                System.out.println("jSONObject : " + jSONObject.toJSONString());
+                //System.out.println("jSONObject : " + jSONObject.toJSONString());
                 masterData.add(new Customer(
                         Integer.parseInt(jSONObject.get("id").toString()),
                         jSONObject.get("firstName").toString(),
@@ -213,35 +219,41 @@ public class EmployeeWindowController {
         secondStage.setMinHeight(400);
         secondStage.setTitle("Modyfikacja klienta");
 
-        UpdateCustomerController controller = loader.<UpdateCustomerController>getController();
+        CustomerUpdateController controller = loader.<CustomerUpdateController>getController();
 
+        fxidLblUpdateCustomer.setText("");
         Customer customerSelectedInTable;
         if (customerTableView.getSelectionModel().getSelectedItem() != null) {
             customerSelectedInTable = customerTableView.getSelectionModel().getSelectedItem();
-            System.out.println("ID wybranego klienta: " + customerSelectedInTable.getId());
+            //System.out.println("ID wybranego klienta: " + customerSelectedInTable.getId());
             controller.initData(customerSelectedInTable);
             secondStage.show();
         } else {
-            System.out.println("Nie wybrano klienta");
+            fxidLblUpdateCustomer.setText("Nie wybrano klienta w tabeli!");
+            System.out.println("Nie wybrano klienta w tabeli do modyfikacji");
         }
+        logger.info("Wczytanie UpdateCustomerWindow");
     }
 
     @FXML
     public void actionDeleteCustomer() {
 
-        Customer selectedPerson = null;
+        System.out.println("********** Usunięcie klienta **********");
+
+        Customer selectedCustomer = null;
         /* customerTableView.requestFocus();
         customerTableView.getSelectionModel().select(2);
         System.out.println(customerTableView.getFocusModel().focus(2));*/
         if (customerTableView.getSelectionModel().getSelectedItem() != null) {
-            selectedPerson = customerTableView.getSelectionModel().getSelectedItem();
-            System.out.println(selectedPerson.getId());
+            selectedCustomer = customerTableView.getSelectionModel().getSelectedItem();
+            //System.out.println(selectedCustomer.getId());
         }
 
+        System.out.println("ID wybranego klienta do usunięcia: " + selectedCustomer.getId());
         JSONObject json = new JSONObject();
-        json.put("id", selectedPerson.getId().toString());
+        json.put("id", selectedCustomer.getId().toString());
 
-        System.out.println(json);
+        //System.out.println(json);
 
         try {
             URL url = new URL("http://localhost:8080/api/customer/delete");

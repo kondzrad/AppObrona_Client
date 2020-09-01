@@ -23,7 +23,7 @@ public class AppObronaClient extends Application {
         primaryStage.setScene(new Scene(rootNode, 700, 700));
         primaryStage.setMinWidth(700);
         primaryStage.setMinHeight(700);
-        primaryStage.setTitle("Poczatki app");
+        primaryStage.setTitle("AppObrona");
         primaryStage.show();
     }
 
