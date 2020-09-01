@@ -15,7 +15,6 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.springframework.stereotype.Controller;
-import pl.kawka.appobrona.model.Customer;
 import pl.kawka.appobrona.model.Employee;
 
 import java.io.BufferedReader;
@@ -24,14 +23,11 @@ import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 
 @Controller
 public class AdminWindowController {
 
     private MainWindowController mainWindowController;
-
 
     @FXML
     private TableView<Employee> employeeTableView;
@@ -54,8 +50,8 @@ public class AdminWindowController {
             conn.setDoOutput(true);
             conn.setRequestMethod("GET");
             conn.getInputStream();
+
             BufferedReader in = new BufferedReader(new InputStreamReader(conn.getInputStream()));
-            System.out.println("poszłooooooooooooooooo");
             JSONParser parser = new JSONParser();
             JSONArray jSONArray = (JSONArray) parser.parse(in.readLine());
 
@@ -83,17 +79,15 @@ public class AdminWindowController {
         } catch (Exception ex) {
             ex.printStackTrace();
         }
-
     }
 
     @FXML
-    public void actionOpenCreateEmployeeWindow(){
+    public void actionOpenCreateEmployeeWindow() {
         Parent root = null;
         Stage secondStage = new Stage();
-        try{
+        try {
             root = FXMLLoader.load(getClass().getResource("/fxml/CreateEmployeeWindow.fxml"));
-        } catch(IOException ex){
-
+        } catch (IOException ex) {
         }
         secondStage.setScene(new Scene(root, 400, 400));
         secondStage.setMinWidth(400);
@@ -103,14 +97,14 @@ public class AdminWindowController {
     }
 
     @FXML
-    public void actionReadCustomers(){
+    public void actionReadCustomers() {
 
         System.out.println("Wchodze do wczytania pracowników z okna AdminWindow");
 
         JSONObject json = new JSONObject();
         try {
             json.put("id", Integer.parseInt(idFieldId.getText()));
-        }catch (NumberFormatException e){
+        } catch (NumberFormatException e) {
             json.put("id", 0);
         }
         json.put("firstName", idFieldFirstName.getText());
@@ -118,7 +112,6 @@ public class AdminWindowController {
         json.put("status", idFieldStatus.getText());
         json.put("login", idFieldLogin.getText());
         json.put("password", idFieldPassword.getText());
-
 
         System.out.println(json);
 
@@ -129,16 +122,15 @@ public class AdminWindowController {
             conn.setDoInput(true);
             conn.setRequestProperty("Content-Type", "application/json");
             conn.setDoOutput(true);
-            conn.setRequestMethod("POST"); //zeby wyslac jakies obiekt JSON chyba nie da sie z GET bo probowalem
+            conn.setRequestMethod("POST");
             OutputStreamWriter wr = new OutputStreamWriter(conn.getOutputStream());
-            wr.write(json.toString());  //wyslanie JSON
+            wr.write(json.toString());
             wr.flush();
             wr.flush();
             wr.close();
             conn.getInputStream();
 
             BufferedReader in = new BufferedReader(new InputStreamReader(conn.getInputStream()));
-            System.out.println("poszłooooooooooooooooo");
             JSONParser parser = new JSONParser();
             JSONArray jSONArray = (JSONArray) parser.parse(in.readLine());
 
@@ -167,18 +159,17 @@ public class AdminWindowController {
             ex.printStackTrace();
             //logger.error("Loading Application Error.", ex);
         }
-
     }
 
     @FXML
-    public void actionOpenUpdateEmployeeWindow(){
+    public void actionOpenUpdateEmployeeWindow() {
 
         Stage secondStage = new Stage();
         FXMLLoader loader = null;
-        try{
+        try {
             loader = new FXMLLoader(getClass().getResource("/fxml/UpdateEmployeeWindow.fxml"));
             secondStage.setScene(new Scene(loader.load(), 400, 400));
-        } catch(IOException ex){
+        } catch (IOException ex) {
         }
         secondStage.setMinWidth(400);
         secondStage.setMinHeight(400);
@@ -190,16 +181,16 @@ public class AdminWindowController {
         if (employeeTableView.getSelectionModel().getSelectedItem() != null) {
             employeeSelectedInTable = employeeTableView.getSelectionModel().getSelectedItem();
             System.out.println("ID wybranego pracownika: " + employeeSelectedInTable.getId());
-            controller.initData(employeeSelectedInTable);
+            controller.initData(employeeSelectedInTable); //przeslanie danych do innego okna
             secondStage.show();
-        }else {
-            System.out.println("nie wybrano danych");
+        } else {
+            System.out.println("Nie wybrano pracownika w tabeli");
         }
-
     }
 
     @FXML
-    public void actionDeleteEmployee(){
+    public void actionDeleteEmployee() {
+
         Employee selectedPerson = null;
         if (employeeTableView.getSelectionModel().getSelectedItem() != null) {
             selectedPerson = employeeTableView.getSelectionModel().getSelectedItem();
@@ -217,9 +208,9 @@ public class AdminWindowController {
             conn.setDoInput(true);
             conn.setRequestProperty("Content-Type", "application/json");
             conn.setDoOutput(true);
-            conn.setRequestMethod("POST"); //zeby wyslac jakies obiekt JSON chyba nie da sie z GET bo probowalem
+            conn.setRequestMethod("POST");
             OutputStreamWriter wr = new OutputStreamWriter(conn.getOutputStream());
-            wr.write(json.toString());  //wyslanie JSON
+            wr.write(json.toString());
             wr.flush();
             wr.flush();
             wr.close();
@@ -233,16 +224,12 @@ public class AdminWindowController {
     }
 
     @FXML
-    public void back(){ //nazwa onAction przycisku
-        mainWindowController.loadMenuScreen();
+    public void back() { //nazwa onAction przycisku
+        mainWindowController.loadLoginScreen();
     }
 
     public void setMainWindowController(MainWindowController mainWindowController) {
         this.mainWindowController = mainWindowController;
     }
-
-
-
-
 
 }

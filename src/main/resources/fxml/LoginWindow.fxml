@@ -7,16 +7,19 @@
 
 <!-- dodany u gory kontroler  -->
 
-<AnchorPane prefHeight="700.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pl.kawka.appobrona.controllers.LoginWindowController">
-   <children>
-      <Label layoutX="46.0" layoutY="37.0" text="Logowanie" />
-      <TextField fx:id="fieldLogin" layoutX="46.0" layoutY="81.0" promptText="Login" />
-      <TextField fx:id="fieldHaslo" layoutX="46.0" layoutY="127.0" promptText="Hasło" />
-      <Label fx:id="statusLogowania" layoutX="213.0" layoutY="176.0" />
-      <Button fx:id="przyciskLogowania" layoutX="140.0" layoutY="172.0" mnemonicParsing="false" onAction="#akcjaLogowania" text="Zaloguj" />
-      <Button layoutX="248.0" layoutY="127.0" mnemonicParsing="false" onAction="#wczytanieEmployeeWindow" text="Pomiń logowanie: Pracownik" />
-      <Button layoutX="568.0" layoutY="215.0" mnemonicParsing="false" onAction="#testA" text="TestWindow" />
-      <Button layoutX="248.0" layoutY="81.0" mnemonicParsing="false" onAction="#wczytanieAdminWindow" text="Pomiń logowanie: Admin" />
-      <Button layoutX="539.0" layoutY="629.0" mnemonicParsing="false" onAction="#exit" text="Wyjście z aplikacji" />
-   </children>
+<AnchorPane prefHeight="700.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8.0.172-ea"
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="pl.kawka.appobrona.controllers.LoginWindowController">
+    <children>
+        <Label layoutX="46.0" layoutY="37.0" text="Logowanie"/>
+        <TextField fx:id="fieldLogin" layoutX="46.0" layoutY="81.0" promptText="Login"/>
+        <TextField fx:id="fieldHaslo" layoutX="46.0" layoutY="127.0" promptText="Hasło"/>
+        <Label fx:id="statusLogowania" layoutX="213.0" layoutY="176.0"/>
+        <Button fx:id="przyciskLogowania" layoutX="140.0" layoutY="172.0" mnemonicParsing="false"
+                onAction="#akcjaLogowania" text="Zaloguj"/>
+        <Button layoutX="248.0" layoutY="127.0" mnemonicParsing="false" onAction="#wczytanieEmployeeWindow"
+                text="Pomiń logowanie: Pracownik"/>
+        <Button layoutX="248.0" layoutY="81.0" mnemonicParsing="false" onAction="#wczytanieAdminWindow"
+                text="Pomiń logowanie: Admin"/>
+        <Button layoutX="539.0" layoutY="629.0" mnemonicParsing="false" onAction="#exit" text="Wyjście z aplikacji"/>
+    </children>
 </AnchorPane>

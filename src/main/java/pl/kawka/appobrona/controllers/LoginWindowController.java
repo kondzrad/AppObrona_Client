@@ -19,11 +19,11 @@ import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-//@Component
+
 @Controller
 public class LoginWindowController {
 
-    private MainWindowController mainWindowController; //pole do ustawienia Set
+    private MainWindowController mainWindowController;
 
     private static final Logger logger = LoggerFactory.getLogger(AppObronaClient.class);
 
@@ -35,9 +35,6 @@ public class LoginWindowController {
     private TextField fieldLogin, fieldHaslo;
     @FXML
     private Label statusLogowania;
-    //@FXML  //zakomentowane bo nie wykonuje na nim dodatkowych rzeczy
-    //private Button przyciskLogowania;
-
 
     @FXML
     void initialize() {
@@ -59,33 +56,32 @@ public class LoginWindowController {
             conn.setDoInput(true);
             conn.setRequestProperty("Content-Type", "application/json");
             conn.setDoOutput(true);
-            conn.setRequestMethod("POST"); //zeby wyslac jakies obiekt JSON chyba nie da sie z GET bo probowalem
+            conn.setRequestMethod("POST");
             OutputStreamWriter wr = new OutputStreamWriter(conn.getOutputStream());
-            wr.write(json.toString());  //wyslanie JSON
+            wr.write(json.toString());
             wr.flush();
             wr.flush();
             wr.close();
             conn.getInputStream();
             BufferedReader in = new BufferedReader(new InputStreamReader(conn.getInputStream()));
-            String wczytany = in.readLine();
-            if (wczytany.equalsIgnoreCase("OKpracownik")) {
+            String readWhoLoggedIn = in.readLine();
+            if (readWhoLoggedIn.equalsIgnoreCase("OKpracownik")) {
                 System.out.println("ok_pracownik");
-                statusLogowania.setText("Jest git!");
+                statusLogowania.setText("Zalogowano pracownika!");
                 wczytanieEmployeeWindow(); //wczytanie widoku pracownika po poprawnym zalogowaniu
-            } else if (wczytany.equalsIgnoreCase("OKadmin")) {
+            } else if (readWhoLoggedIn.equalsIgnoreCase("OKadmin")) {
                 System.out.println("ok_admin");
-                statusLogowania.setText("Jest git!");
+                statusLogowania.setText("Zalogowano admina!");
                 wczytanieAdminWindow();
             } else {
                 statusLogowania.setText("Błędne logowanie!");
-                //logger.error("Błędne logowanie");
+                logger.error("Błędne logowanie");
             }
 
         } catch (Exception ex) {
             ex.printStackTrace();
             //logger.error("Loading Application Error.", ex);
         }
-
     }
 
     @FXML
@@ -117,24 +113,8 @@ public class LoginWindowController {
         mainWindowController.setScreen(pane);
     }
 
-
     @FXML
-    public void testA() {
-        FXMLLoader loader = new FXMLLoader(this.getClass().getResource("/fxml/TestW.fxml"));
-        Pane pane = null;
-        try {
-            pane = loader.load();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        TestC testC = loader.getController();
-        testC.setMainWindowController(mainWindowController);
-        mainWindowController.setScreen(pane);
-
-    }
-
-    @FXML
-    public void exit(){
+    public void exit() {
         Platform.exit();
     }
 

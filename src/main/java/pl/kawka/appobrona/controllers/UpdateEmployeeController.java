@@ -4,7 +4,6 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import org.json.simple.JSONObject;
-import pl.kawka.appobrona.model.Customer;
 import pl.kawka.appobrona.model.Employee;
 
 import java.io.OutputStreamWriter;
@@ -33,7 +32,7 @@ public class UpdateEmployeeController {
     }
 
     @FXML
-    public void actionUpdateEmployee(){
+    public void actionUpdateEmployee() {
 
         System.out.println("Wchodze do modyfikacja pracownika");
 

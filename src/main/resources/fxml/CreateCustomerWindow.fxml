@@ -5,16 +5,18 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="400.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pl.kawka.appobrona.controllers.CreateCustomerController">
-   <children>
-      <Label layoutX="113.0" layoutY="14.0" text="CreateCustomerWindow" />
-      <TextField fx:id="idFieldFirstName" layoutX="39.0" layoutY="48.0" promptText="Imie" />
-      <Button layoutX="285.0" layoutY="344.0" mnemonicParsing="false" onAction="#actionCreateCustomer" text="Stwórz klienta" />
-      <TextField fx:id="idFieldLastName" layoutX="39.0" layoutY="86.0" promptText="Nazwisko" />
-      <TextField fx:id="idFieldTown" layoutX="39.0" layoutY="129.0" promptText="Miasto" />
-      <TextField fx:id="idFieldStreet" layoutX="39.0" layoutY="175.0" promptText="Ulica" />
-      <TextField fx:id="idFieldPostcode" layoutX="39.0" layoutY="228.0" promptText="Kod pocztowy" />
-      <TextField fx:id="idFieldTelephoneNumber" layoutX="39.0" layoutY="271.0" promptText="Numer telefonu" />
-      <TextField fx:id="idFieldNip" layoutX="39.0" layoutY="319.0" promptText="NIP" />
-   </children>
+<AnchorPane prefHeight="400.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/8.0.172-ea"
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="pl.kawka.appobrona.controllers.CreateCustomerController">
+    <children>
+        <Label layoutX="113.0" layoutY="14.0" text="CreateCustomerWindow"/>
+        <TextField fx:id="idFieldFirstName" layoutX="39.0" layoutY="48.0" promptText="Imie"/>
+        <Button layoutX="285.0" layoutY="344.0" mnemonicParsing="false" onAction="#actionCreateCustomer"
+                text="Stwórz klienta"/>
+        <TextField fx:id="idFieldLastName" layoutX="39.0" layoutY="86.0" promptText="Nazwisko"/>
+        <TextField fx:id="idFieldTown" layoutX="39.0" layoutY="129.0" promptText="Miasto"/>
+        <TextField fx:id="idFieldStreet" layoutX="39.0" layoutY="175.0" promptText="Ulica"/>
+        <TextField fx:id="idFieldPostcode" layoutX="39.0" layoutY="228.0" promptText="Kod pocztowy"/>
+        <TextField fx:id="idFieldTelephoneNumber" layoutX="39.0" layoutY="271.0" promptText="Numer telefonu"/>
+        <TextField fx:id="idFieldNip" layoutX="39.0" layoutY="319.0" promptText="NIP"/>
+    </children>
 </AnchorPane>

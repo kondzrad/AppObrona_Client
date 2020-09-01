@@ -16,15 +16,11 @@ public class MainWindowController { //kontroler glownego pustego okna
 
     @FXML
     public void initialize() { //metoda wywolywana zaraz po kontruktorze
-        loadMenuScreen();
-        // to mozna zakomentowac i wtedy aplikacja startuje z glownym widokiem zadeklarowym w AppObronaClient
+        loadLoginScreen();
     }
 
-    public void loadMenuScreen() { //ladowanie ekranu login
+    public void loadLoginScreen() {
         FXMLLoader loader = new FXMLLoader(this.getClass().getResource("/fxml/LoginWindow.fxml"));
-
-        System.out.println("nic");
-
         Pane pane = null;
         try {
             pane = loader.load();
@@ -33,12 +29,11 @@ public class MainWindowController { //kontroler glownego pustego okna
         }
 
         LoginWindowController loginWindowController = loader.getController(); //wyciagamy referencje
-        loginWindowController.setMainWindowController(this);//przekaznie instancji klasy menu kontroller do inyych (beda sie mogly
-        // odnosic do niego)
+        loginWindowController.setMainWindowController(this);//przekaznie instancji klasy menu kontroller do inyych
+        // (beda sie mogly odnosic do niego)
 
         //teraz do stackpane glownego wrzucamy Pane z opcjami
         setScreen(pane);
-
     }
 
     public void setScreen(Pane pane) {

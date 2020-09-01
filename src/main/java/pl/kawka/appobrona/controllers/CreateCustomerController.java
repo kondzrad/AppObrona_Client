@@ -5,8 +5,6 @@ import javafx.scene.control.TextField;
 import org.json.simple.JSONObject;
 import org.springframework.stereotype.Controller;
 
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
@@ -18,9 +16,8 @@ public class CreateCustomerController {
     private TextField idFieldFirstName, idFieldLastName, idFieldTown, idFieldStreet, idFieldPostcode,
             idFieldTelephoneNumber, idFieldNip;
 
-
     @FXML
-    public void actionCreateCustomer(){
+    public void actionCreateCustomer() {
 
         System.out.println("Wchodze do stworzenia klienta");
 
@@ -44,30 +41,13 @@ public class CreateCustomerController {
             conn.setDoInput(true);
             conn.setRequestProperty("Content-Type", "application/json");
             conn.setDoOutput(true);
-            conn.setRequestMethod("POST"); //zeby wyslac jakies obiekt JSON chyba nie da sie z GET bo probowalem
+            conn.setRequestMethod("POST");
             OutputStreamWriter wr = new OutputStreamWriter(conn.getOutputStream());
-            wr.write(json.toString());  //wyslanie JSON
+            wr.write(json.toString());
             wr.flush();
             wr.flush();
             wr.close();
             conn.getInputStream();
-
-
-            /*BufferedReader in = new BufferedReader(new InputStreamReader(conn.getInputStream()));
-            String wczytany = in.readLine();
-            if (wczytany.equalsIgnoreCase("OKpracownik")) {
-                System.out.println("ok_pracownik");
-                statusLogowania.setText("Jest git!");
-                wczytanieEmployeeWindow(); //wczytanie widoku pracownika po poprawnym zalogowaniu
-            } else if (wczytany.equalsIgnoreCase("OKadmin")) {
-                System.out.println("ok_admin");
-                statusLogowania.setText("Jest git!");
-                wczytanieAdminWindow();
-            } else {
-                statusLogowania.setText("Błędne logowanie!");
-                //logger.error("Błędne logowanie");
-            }*/
-
         } catch (Exception ex) {
             ex.printStackTrace();
             //logger.error("Loading Application Error.", ex);

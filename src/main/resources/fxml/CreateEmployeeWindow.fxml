@@ -5,14 +5,16 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="400.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pl.kawka.appobrona.controllers.CreateEmployeeController">
+<AnchorPane prefHeight="400.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/8.0.172-ea"
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="pl.kawka.appobrona.controllers.CreateEmployeeController">
     <children>
-        <Label layoutX="113.0" layoutY="14.0" text="CreateCustomerWindow" />
-        <TextField fx:id="idFieldFirstName" layoutX="39.0" layoutY="48.0" promptText="Imie" />
-        <TextField fx:id="idFieldLastName" layoutX="39.0" layoutY="86.0" promptText="Nazwisko" />
-        <TextField fx:id="idFieldStatus" layoutX="39.0" layoutY="129.0" promptText="Status" />
-        <TextField fx:id="idFieldLogin" layoutX="39.0" layoutY="175.0" promptText="Login" />
-        <TextField fx:id="idFieldPassword" layoutX="39.0" layoutY="228.0" promptText="Hasło" />
-        <Button layoutX="257.0" layoutY="348.0" mnemonicParsing="false" onAction="#actionCreateEmployee" text="Stwórz pracownika" />
+        <Label layoutX="113.0" layoutY="14.0" text="CreateCustomerWindow"/>
+        <TextField fx:id="idFieldFirstName" layoutX="39.0" layoutY="48.0" promptText="Imie"/>
+        <TextField fx:id="idFieldLastName" layoutX="39.0" layoutY="86.0" promptText="Nazwisko"/>
+        <TextField fx:id="idFieldStatus" layoutX="39.0" layoutY="129.0" promptText="Status"/>
+        <TextField fx:id="idFieldLogin" layoutX="39.0" layoutY="175.0" promptText="Login"/>
+        <TextField fx:id="idFieldPassword" layoutX="39.0" layoutY="228.0" promptText="Hasło"/>
+        <Button layoutX="257.0" layoutY="348.0" mnemonicParsing="false" onAction="#actionCreateEmployee"
+                text="Stwórz pracownika"/>
     </children>
 </AnchorPane>

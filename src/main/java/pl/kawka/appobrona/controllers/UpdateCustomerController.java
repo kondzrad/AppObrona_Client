@@ -17,26 +17,26 @@ public class UpdateCustomerController {
 
     @FXML
     private TextField idFieldFirstName, idFieldLastName, idFieldTown, idFieldStreet, idFieldPostcode,
-            idFieldTelephoneNumber, idFieldNip,idFieldDateAdded;
+            idFieldTelephoneNumber, idFieldNip, idFieldDateAdded;
 
     Integer idWybranegoKlienta;
 
 
     void initData(Customer customer) {
-       idWybranegoKlienta = customer.getId();
-       fxidLabelId.setText("ID wybranego klienta: " + idWybranegoKlienta);
-       idFieldFirstName.setText(customer.getFirstName());
-       idFieldLastName.setText(customer.getLastName());
-       idFieldTown.setText(customer.getTown());
-       idFieldStreet.setText(customer.getStreet());
-       idFieldPostcode.setText(customer.getPostcode());
-       idFieldTelephoneNumber.setText(customer.getTelephoneNumber());
-       idFieldNip.setText(customer.getNip());
-       idFieldDateAdded.setText(customer.getDateAdded());
+        idWybranegoKlienta = customer.getId();
+        fxidLabelId.setText("ID wybranego klienta: " + idWybranegoKlienta);
+        idFieldFirstName.setText(customer.getFirstName());
+        idFieldLastName.setText(customer.getLastName());
+        idFieldTown.setText(customer.getTown());
+        idFieldStreet.setText(customer.getStreet());
+        idFieldPostcode.setText(customer.getPostcode());
+        idFieldTelephoneNumber.setText(customer.getTelephoneNumber());
+        idFieldNip.setText(customer.getNip());
+        idFieldDateAdded.setText(customer.getDateAdded());
     }
 
     @FXML
-    public void actionUpdateCustomer(){
+    public void actionUpdateCustomer() {
 
         System.out.println("Wchodze do modyfikacja klienta");
 

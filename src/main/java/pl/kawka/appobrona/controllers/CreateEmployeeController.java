@@ -14,7 +14,7 @@ public class CreateEmployeeController {
     private TextField idFieldFirstName, idFieldLastName, idFieldStatus, idFieldLogin, idFieldPassword;
 
     @FXML
-    public void actionCreateEmployee(){
+    public void actionCreateEmployee() {
 
         System.out.println("Wchodze do stworzenia klienta");
 
@@ -35,9 +35,9 @@ public class CreateEmployeeController {
             conn.setDoInput(true);
             conn.setRequestProperty("Content-Type", "application/json");
             conn.setDoOutput(true);
-            conn.setRequestMethod("POST"); //zeby wyslac jakies obiekt JSON chyba nie da sie z GET bo probowalem
+            conn.setRequestMethod("POST");
             OutputStreamWriter wr = new OutputStreamWriter(conn.getOutputStream());
-            wr.write(json.toString());  //wyslanie JSON
+            wr.write(json.toString());
             wr.flush();
             wr.flush();
             wr.close();
