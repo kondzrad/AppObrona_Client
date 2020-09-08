@@ -20,9 +20,9 @@ public class AppObronaClient extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        primaryStage.setScene(new Scene(rootNode, 700, 700));
-        primaryStage.setMinWidth(700);
-        primaryStage.setMinHeight(700);
+        primaryStage.setScene(new Scene(rootNode, 800, 680));
+        primaryStage.setMinWidth(800);
+        primaryStage.setMinHeight(680);
         primaryStage.setTitle("AppObrona");
         primaryStage.show();
     }

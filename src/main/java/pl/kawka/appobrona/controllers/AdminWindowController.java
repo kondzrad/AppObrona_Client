@@ -95,12 +95,12 @@ public class AdminWindowController {
         Parent root = null;
         Stage secondStage = new Stage();
         try {
-            root = FXMLLoader.load(getClass().getResource("/fxml/CreateEmployeeWindow.fxml"));
+            root = FXMLLoader.load(getClass().getResource("/fxml/EmployeeCreateWindow.fxml"));
         } catch (IOException ex) {
         }
-        secondStage.setScene(new Scene(root, 400, 400));
-        secondStage.setMinWidth(400);
-        secondStage.setMinHeight(400);
+        secondStage.setScene(new Scene(root, 440, 440));
+        secondStage.setMinWidth(440);
+        secondStage.setMinHeight(440);
         secondStage.setTitle("Stwórz pracownika");
         secondStage.show();
         logger.info("Wczytanie CreateEmployeeWindow");
@@ -176,12 +176,12 @@ public class AdminWindowController {
         Stage secondStage = new Stage();
         FXMLLoader loader = null;
         try {
-            loader = new FXMLLoader(getClass().getResource("/fxml/UpdateEmployeeWindow.fxml"));
-            secondStage.setScene(new Scene(loader.load(), 400, 400));
+            loader = new FXMLLoader(getClass().getResource("/fxml/EmployeeUpdateWindow.fxml"));
+            secondStage.setScene(new Scene(loader.load(), 440, 440));
         } catch (IOException ex) {
         }
-        secondStage.setMinWidth(400);
-        secondStage.setMinHeight(400);
+        secondStage.setMinWidth(440);
+        secondStage.setMinHeight(440);
         secondStage.setTitle("Modyfikacja pracownika");
 
         EmployeeUpdateController controller = loader.<EmployeeUpdateController>getController();

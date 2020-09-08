@@ -11,23 +11,23 @@
     <children>
         <Label layoutX="311.0" layoutY="14.0" text="Konto admina" />
         <Button layoutX="607.0" layoutY="645.0" mnemonicParsing="false" onAction="#back" text="Wstecz" />
-        <Button layoutX="30.0" layoutY="45.0" mnemonicParsing="false" onAction="#readDatabase" text="Wczytaj cała baze" />
-        <Button layoutX="316.0" layoutY="45.0" mnemonicParsing="false" onAction="#actionOpenCreateEmployeeWindow" text="Stwórz pracownika" />
-        <Button layoutX="30.0" layoutY="110.0" mnemonicParsing="false" onAction="#actionReadCustomers" prefHeight="25.0" prefWidth="110.0" text="Wczytaj pracowników" />
-        <Button layoutX="445.0" layoutY="45.0" mnemonicParsing="false" onAction="#actionOpenUpdateEmployeeWindow" text="Modyfikuj pracownika" />
-        <Button layoutX="590.0" layoutY="45.0" mnemonicParsing="false" onAction="#actionDeleteEmployee" text="Usuń pracownika" />
+        <Button layoutX="30.0" layoutY="45.0" mnemonicParsing="false" onAction="#readDatabase" text="Wczytaj całą bazę" />
+        <Button layoutX="296.0" layoutY="45.0" mnemonicParsing="false" onAction="#actionOpenCreateEmployeeWindow" text="Dodaj pracownika" />
+        <Button layoutX="30.0" layoutY="110.0" mnemonicParsing="false" onAction="#actionReadCustomers" prefHeight="25.0" prefWidth="145.0" text="Wyszukaj pracowników" />
+        <Button layoutX="425.0" layoutY="45.0" mnemonicParsing="false" onAction="#actionOpenUpdateEmployeeWindow" text="Modyfikuj pracownika" />
+        <Button layoutX="570.0" layoutY="45.0" mnemonicParsing="false" onAction="#actionDeleteEmployee" text="Usuń pracownika" />
 
-        <TextField fx:id="idFieldId" layoutX="30.0" layoutY="160.0" prefWidth="110.0" promptText="ID" />
-        <TextField fx:id="idFieldFirstName" layoutX="160.0" layoutY="110.0" prefWidth="110.0" promptText="Imie" />
-        <TextField fx:id="idFieldLastName" layoutX="160.0" layoutY="160.0" prefWidth="110.0" promptText="Nazwisko" />
-        <TextField fx:id="idFieldStatus" layoutX="290.0" layoutY="110.0" prefWidth="110.0" promptText="Status" />
-        <TextField fx:id="idFieldLogin" layoutX="290.0" layoutY="160.0" prefWidth="110.0" promptText="Login" />
-        <TextField fx:id="idFieldPassword" layoutX="420.0" layoutY="110.0" prefWidth="110.0" promptText="Hasło" />
+        <TextField fx:id="idFieldId" layoutX="190.0" layoutY="110.0" prefWidth="110.0" promptText="ID" />
+        <TextField fx:id="idFieldFirstName" layoutX="310.0" layoutY="110.0" prefWidth="110.0" promptText="Imię" />
+        <TextField fx:id="idFieldLastName" layoutX="310.0" layoutY="160.0" prefWidth="110.0" promptText="Nazwisko" />
+        <TextField fx:id="idFieldStatus" layoutX="190.0" layoutY="160.0" prefWidth="110.0" promptText="Status" />
+        <TextField fx:id="idFieldLogin" layoutX="430.0" layoutY="110.0" prefWidth="110.0" promptText="Login" />
+        <TextField fx:id="idFieldPassword" layoutX="430.0" layoutY="160.0" prefWidth="110.0" promptText="Hasło" />
 
         <TableView fx:id="employeeTableView" layoutX="160.0" layoutY="204.0" prefHeight="415.0" prefWidth="382.0">
             <columns>
                 <TableColumn fx:id="id" prefWidth="30.0" text="ID" />
-                <TableColumn fx:id="firstName" prefWidth="70.0" text="Imie" />
+                <TableColumn fx:id="firstName" prefWidth="70.0" text="Imię" />
                 <TableColumn fx:id="lastName" prefWidth="70.0" text="Nazwisko" />
                 <TableColumn fx:id="status" prefWidth="70.0" text="Status" />
                 <TableColumn fx:id="login" prefWidth="70.0" text="Login" />

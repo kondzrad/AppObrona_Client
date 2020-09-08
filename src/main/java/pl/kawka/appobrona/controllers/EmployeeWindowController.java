@@ -104,12 +104,12 @@ public class EmployeeWindowController {
         Parent root = null;
         Stage secondStage = new Stage();
         try {
-            root = FXMLLoader.load(getClass().getResource("/fxml/CreateCustomerWindow.fxml"));
+            root = FXMLLoader.load(getClass().getResource("/fxml/CustomerCreateWindow.fxml"));
         } catch (IOException ex) {
         }
-        secondStage.setScene(new Scene(root, 400, 400));
-        secondStage.setMinWidth(400);
-        secondStage.setMinHeight(400);
+        secondStage.setScene(new Scene(root, 440, 440));
+        secondStage.setMinWidth(440);
+        secondStage.setMinHeight(440);
         secondStage.setTitle("Stwórz klienta");
         secondStage.show();
         logger.info("Wczytanie CreateCustomerWindow");
@@ -145,7 +145,7 @@ public class EmployeeWindowController {
                 System.out.println("zła data");
                 //e.printStackTrace();
                 lblBadDateAdded.setText("Zła data!");
-                json.put("dateAdded", "");
+                json.put("dateAdded", "0000-00-00 00:00:00");
             }
         }
 
@@ -211,12 +211,12 @@ public class EmployeeWindowController {
         Stage secondStage = new Stage();
         FXMLLoader loader = null;
         try {
-            loader = new FXMLLoader(getClass().getResource("/fxml/UpdateCustomerWindow.fxml"));
-            secondStage.setScene(new Scene(loader.load(), 400, 400));
+            loader = new FXMLLoader(getClass().getResource("/fxml/CustomerUpdateWindow.fxml"));
+            secondStage.setScene(new Scene(loader.load(), 440, 440));
         } catch (IOException ex) {
         }
-        secondStage.setMinWidth(400);
-        secondStage.setMinHeight(400);
+        secondStage.setMinWidth(440);
+        secondStage.setMinHeight(440);
         secondStage.setTitle("Modyfikacja klienta");
 
         CustomerUpdateController controller = loader.<CustomerUpdateController>getController();
