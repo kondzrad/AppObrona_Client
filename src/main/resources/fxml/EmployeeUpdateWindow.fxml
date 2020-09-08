@@ -17,6 +17,19 @@
         <Button layoutX="265.0" layoutY="390.0" mnemonicParsing="false" onAction="#actionUpdateEmployee"
                 text="Modyfikacja pracownika" />
         <Label fx:id="fxidLabelId" layoutX="39.0" layoutY="69.0" text="ID klienta: ???" />
+
+        <Label fx:id="lblFirstName" layoutX="199.0" layoutY="100.0" />
+        <Label fx:id="lblLastName" layoutX="199.0" layoutY="135.0" />
+        <Label fx:id="lblStatus" layoutX="199.0" layoutY="170.0" />
+        <Label fx:id="lblLogin" layoutX="199.0" layoutY="205.0" />
+        <Label fx:id="lblPassword" layoutX="199.0" layoutY="240.0" />
+
+        <Label layoutX="30.0" layoutY="100.0" text="*" />
+        <Label layoutX="30.0" layoutY="135.0" text="*" />
+        <Label layoutX="30.0" layoutY="170.0" text="*" />
+        <Label layoutX="30.0" layoutY="205.0" text="*" />
+        <Label layoutX="30.0" layoutY="240.0" text="*" />
+        <Label layoutX="95.0" layoutY="270.0" text="* Pola wymagane" />
     </children>
 
 </AnchorPane>

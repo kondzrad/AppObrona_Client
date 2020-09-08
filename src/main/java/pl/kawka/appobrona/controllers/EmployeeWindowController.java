@@ -121,10 +121,15 @@ public class EmployeeWindowController {
 
         JSONObject json = new JSONObject();
         try {
-            json.put("id", Integer.parseInt(idFieldId.getText()));
+            if(idFieldId.getText().isEmpty()){
+                json.put("id", 0);
+            }else{
+                json.put("id", Integer.parseInt(idFieldId.getText()));
+            }
         } catch (NumberFormatException e) {
-            json.put("id", 0);
+            json.put("id", -1);
         }
+
         json.put("firstName", idFieldFirstName.getText());
         json.put("lastName", idFieldLastName.getText());
         json.put("town", idFieldTown.getText());

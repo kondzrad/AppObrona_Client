@@ -136,14 +136,14 @@ public class CustomerUpdateController {
 
         JSONObject json = new JSONObject();
         json.put("id", idSelectedCustomer);
-        json.put("firstName", idFieldFirstName.getText());
-        json.put("lastName", idFieldLastName.getText());
-        json.put("town", idFieldTown.getText());
-        json.put("street", idFieldStreet.getText());
-        json.put("postcode", idFieldPostcode.getText());
-        json.put("telephoneNumber", idFieldTelephoneNumber.getText());
-        json.put("nip", idFieldNip.getText());
-        json.put("dateAdded", idFieldDateAdded.getText());
+        json.put("firstName", firstName);
+        json.put("lastName", lastName);
+        json.put("town", town);
+        json.put("street", street);
+        json.put("postcode", postcode);
+        json.put("telephoneNumber", telephoneNumber);
+        json.put("nip", nip);
+        json.put("dateAdded", dateAdded);
 
         //System.out.println(json);
 
