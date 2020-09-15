@@ -39,11 +39,11 @@ public class EmployeeWindowController {
     private MainWindowController mainWindowController;
 
     @FXML
-    private TextField idFieldId, idFieldFirstName, idFieldLastName, idFieldTown, idFieldStreet, idFieldPostcode,
-            idFieldTelephoneNumber, idFieldNip, idFieldDateAdded;
+    private TextField fxidFieldId, fxidFieldFirstName, fxidFieldLastName, fxidFieldTown, fxidFieldStreet, fxidFieldPostcode,
+            fxidFieldTelephoneNumber, fxidFieldNip, fxidFieldDateAdded;
 
     @FXML
-    private Label lblBadDateAdded, fxidLblUpdateCustomer;
+    private Label lblBadDateAdded, fxidLblUpdateCustomer, fxidLblDeleteCustomer;
 
     @FXML
     private TableView<Customer> customerTableView;
@@ -110,7 +110,7 @@ public class EmployeeWindowController {
         secondStage.setScene(new Scene(root, 440, 440));
         secondStage.setMinWidth(440);
         secondStage.setMinHeight(440);
-        secondStage.setTitle("Stwórz klienta");
+        secondStage.setTitle("Dodawanie klienta");
         secondStage.show();
         logger.info("Wczytanie CreateCustomerWindow");
     }
@@ -121,31 +121,31 @@ public class EmployeeWindowController {
 
         JSONObject json = new JSONObject();
         try {
-            if(idFieldId.getText().isEmpty()){
+            if(fxidFieldId.getText().isEmpty()){
                 json.put("id", 0);
             }else{
-                json.put("id", Integer.parseInt(idFieldId.getText()));
+                json.put("id", Integer.parseInt(fxidFieldId.getText()));
             }
         } catch (NumberFormatException e) {
             json.put("id", -1);
         }
 
-        json.put("firstName", idFieldFirstName.getText());
-        json.put("lastName", idFieldLastName.getText());
-        json.put("town", idFieldTown.getText());
-        json.put("street", idFieldStreet.getText());
-        json.put("postcode", idFieldPostcode.getText());
-        json.put("telephoneNumber", idFieldTelephoneNumber.getText());
-        json.put("nip", idFieldNip.getText());
+        json.put("firstName", fxidFieldFirstName.getText());
+        json.put("lastName", fxidFieldLastName.getText());
+        json.put("town", fxidFieldTown.getText());
+        json.put("street", fxidFieldStreet.getText());
+        json.put("postcode", fxidFieldPostcode.getText());
+        json.put("telephoneNumber", fxidFieldTelephoneNumber.getText());
+        json.put("nip", fxidFieldNip.getText());
 
         lblBadDateAdded.setText("");
-        if (idFieldDateAdded.getText().isEmpty()) {
-            json.put("dateAdded", idFieldDateAdded.getText());
+        if (fxidFieldDateAdded.getText().isEmpty()) {
+            json.put("dateAdded", fxidFieldDateAdded.getText());
             //System.out.println("pusty");
         } else {
             try {
-                new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(idFieldDateAdded.getText());
-                json.put("dateAdded", idFieldDateAdded.getText());
+                new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(fxidFieldDateAdded.getText());
+                json.put("dateAdded", fxidFieldDateAdded.getText());
             } catch (ParseException e) {
                 System.out.println("zła data");
                 //e.printStackTrace();
@@ -212,6 +212,8 @@ public class EmployeeWindowController {
 
     @FXML
     public void actionOpenUpdateCustomerWindow() {
+        fxidLblUpdateCustomer.setText("");
+        fxidLblDeleteCustomer.setText("");
 
         Stage secondStage = new Stage();
         FXMLLoader loader = null;
@@ -242,6 +244,8 @@ public class EmployeeWindowController {
 
     @FXML
     public void actionDeleteCustomer() {
+        fxidLblUpdateCustomer.setText("");
+        fxidLblDeleteCustomer.setText("");
 
         System.out.println("********** Usunięcie klienta **********");
 
@@ -252,34 +256,39 @@ public class EmployeeWindowController {
         if (customerTableView.getSelectionModel().getSelectedItem() != null) {
             selectedCustomer = customerTableView.getSelectionModel().getSelectedItem();
             //System.out.println(selectedCustomer.getId());
+
+            System.out.println("ID wybranego klienta do usunięcia: " + selectedCustomer.getId());
+            JSONObject json = new JSONObject();
+            json.put("id", selectedCustomer.getId().toString());
+
+            //System.out.println(json);
+
+            try {
+                URL url = new URL("http://localhost:8080/api/customer/delete");
+                HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+                conn.setUseCaches(false);
+                conn.setDoInput(true);
+                conn.setRequestProperty("Content-Type", "application/json");
+                conn.setDoOutput(true);
+                conn.setRequestMethod("DELETE");
+                OutputStreamWriter wr = new OutputStreamWriter(conn.getOutputStream());
+                wr.write(json.toString());
+                wr.flush();
+                wr.flush();
+                wr.close();
+                conn.getInputStream();
+
+                readDatabase();
+            } catch (Exception ex) {
+                ex.printStackTrace();
+                //logger.error("Loading Application Error.", ex);
+            }
+        } else{
+            System.out.println("Nie wybrano klienta w tabeli do usunięcia");
+            fxidLblDeleteCustomer.setText("Nie wybrano pracownika w tabeli!");
         }
 
-        System.out.println("ID wybranego klienta do usunięcia: " + selectedCustomer.getId());
-        JSONObject json = new JSONObject();
-        json.put("id", selectedCustomer.getId().toString());
 
-        //System.out.println(json);
-
-        try {
-            URL url = new URL("http://localhost:8080/api/customer/delete");
-            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-            conn.setUseCaches(false);
-            conn.setDoInput(true);
-            conn.setRequestProperty("Content-Type", "application/json");
-            conn.setDoOutput(true);
-            conn.setRequestMethod("POST");
-            OutputStreamWriter wr = new OutputStreamWriter(conn.getOutputStream());
-            wr.write(json.toString());
-            wr.flush();
-            wr.flush();
-            wr.close();
-            conn.getInputStream();
-
-            readDatabase();
-        } catch (Exception ex) {
-            ex.printStackTrace();
-            //logger.error("Loading Application Error.", ex);
-        }
 
     }
 

@@ -32,22 +32,22 @@ public class LoginWindowController {
     }
 
     @FXML
-    private TextField fieldLogin, fieldHaslo;
+    private TextField fieldLogin, fieldPassword;
     @FXML
-    private Label statusLogowania;
+    private Label statusLogin;
 
-    @FXML
+    /*@FXML
     void initialize() {
-    }
+    }*/
 
     @FXML
-    private void akcjaLogowania(ActionEvent event) {
+    private void actionLogin(ActionEvent event) {
 
         System.out.println("********** Logowanie **********");
 
         JSONObject json = new JSONObject();
         json.put("login", fieldLogin.getText());
-        json.put("password", fieldHaslo.getText());
+        json.put("password", fieldPassword.getText());
 
         //System.out.println(json);
 
@@ -62,21 +62,20 @@ public class LoginWindowController {
             OutputStreamWriter wr = new OutputStreamWriter(conn.getOutputStream());
             wr.write(json.toString());
             wr.flush();
-            wr.flush();
             wr.close();
             conn.getInputStream();
             BufferedReader in = new BufferedReader(new InputStreamReader(conn.getInputStream()));
             String readWhoLoggedIn = in.readLine();
             if (readWhoLoggedIn.equalsIgnoreCase("OKpracownik")) {
                 System.out.println("Zalogowano pracownika");
-                statusLogowania.setText("Zalogowano pracownika!");
-                wczytanieEmployeeWindow(); //wczytanie widoku pracownika po poprawnym zalogowaniu
+                statusLogin.setText("Zalogowano pracownika!");
+                readEmployeeWindow(); //wczytanie widoku pracownika po poprawnym zalogowaniu
             } else if (readWhoLoggedIn.equalsIgnoreCase("OKadmin")) {
                 System.out.println("Zalogowano admina");
-                statusLogowania.setText("Zalogowano admina!");
-                wczytanieAdminWindow();
+                statusLogin.setText("Zalogowano admina!");
+                readAdminWindow();
             } else {
-                statusLogowania.setText("Błędne logowanie!");
+                statusLogin.setText("Błędne logowanie!");
                 logger.error("Błędne logowanie");
             }
 
@@ -86,8 +85,7 @@ public class LoginWindowController {
         }
     }
 
-    @FXML
-    public void wczytanieEmployeeWindow() {
+    public void readEmployeeWindow() {
         FXMLLoader loader = new FXMLLoader(this.getClass().getResource("/fxml/EmployeeWindow.fxml"));
         Pane pane = null;
         try {
@@ -101,8 +99,7 @@ public class LoginWindowController {
         logger.info("Wczytanie EmployeeWindow");
     }
 
-    @FXML
-    public void wczytanieAdminWindow() {
+    public void readAdminWindow() {
         FXMLLoader loader = new FXMLLoader(this.getClass().getResource("/fxml/AdminWindow.fxml"));
         Pane pane = null;
         try {

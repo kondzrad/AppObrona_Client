@@ -12,7 +12,7 @@ import org.springframework.context.ConfigurableApplicationContext;
 @SpringBootApplication
 public class AppObronaClient extends Application {
     private ConfigurableApplicationContext springContext; //do wstrzykiwania zaleznosci
-    private Parent rootNode;
+        private Parent rootNode;
 
     public static void main(String[] args) {
         Application.launch(args);
@@ -23,7 +23,7 @@ public class AppObronaClient extends Application {
         primaryStage.setScene(new Scene(rootNode, 800, 680));
         primaryStage.setMinWidth(800);
         primaryStage.setMinHeight(680);
-        primaryStage.setTitle("AppObrona");
+        primaryStage.setTitle("App klient-serwer");
         primaryStage.show();
     }
 

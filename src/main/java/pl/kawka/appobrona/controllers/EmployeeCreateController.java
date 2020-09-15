@@ -14,7 +14,7 @@ import java.util.regex.Pattern;
 public class EmployeeCreateController {
 
     @FXML
-    private TextField idFieldFirstName, idFieldLastName, idFieldLogin, idFieldPassword;
+    private TextField fxidFieldFirstName, fxidFieldLastName, fxidFieldLogin, fxidFieldPassword;
 
     @FXML
     private ChoiceBox choiceBoxStatus;
@@ -38,11 +38,11 @@ public class EmployeeCreateController {
         lblLogin.setText("");
         lblPassword.setText("");
 
-        String firstName = idFieldFirstName.getText();
-        String lastName = idFieldLastName.getText();
+        String firstName = fxidFieldFirstName.getText();
+        String lastName = fxidFieldLastName.getText();
         String status = choiceBoxStatus.getValue().toString();
-        String login = idFieldLogin.getText();
-        String password = idFieldPassword.getText();
+        String login = fxidFieldLogin.getText();
+        String password = fxidFieldPassword.getText();
 
         Pattern compiledPatternString = Pattern.compile("[a-zA-ZżźćńółęąśŻŹĆĄŚĘŁÓŃ]{1,40}");
         Matcher matcherFirstName = compiledPatternString.matcher(firstName);

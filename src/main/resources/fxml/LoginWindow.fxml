@@ -11,11 +11,9 @@
     <children>
         <Label layoutX="46.0" layoutY="37.0" text="Logowanie" />
         <TextField fx:id="fieldLogin" layoutX="46.0" layoutY="81.0" promptText="Login" />
-        <TextField fx:id="fieldHaslo" layoutX="46.0" layoutY="127.0" promptText="Hasło" />
-        <Label fx:id="statusLogowania" layoutX="213.0" layoutY="176.0" />
-        <Button fx:id="przyciskLogowania" layoutX="140.0" layoutY="172.0" mnemonicParsing="false" onAction="#akcjaLogowania" text="Zaloguj" />
-        <Button layoutX="248.0" layoutY="127.0" mnemonicParsing="false" onAction="#wczytanieEmployeeWindow" text="Pomiń logowanie: Pracownik" />
-        <Button layoutX="248.0" layoutY="81.0" mnemonicParsing="false" onAction="#wczytanieAdminWindow" text="Pomiń logowanie: Admin" />
+        <TextField fx:id="fieldPassword" layoutX="46.0" layoutY="127.0" promptText="Hasło" />
+        <Label fx:id="statusLogin" layoutX="213.0" layoutY="176.0" />
+        <Button fx:id="przyciskLogowania" layoutX="140.0" layoutY="172.0" mnemonicParsing="false" onAction="#actionLogin" text="Zaloguj" />
         <Button layoutX="660.0" layoutY="630.0" mnemonicParsing="false" onAction="#exit" text="Wyjście z aplikacji" />
     </children>
 </AnchorPane>

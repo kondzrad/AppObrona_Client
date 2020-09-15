@@ -9,11 +9,12 @@
 <AnchorPane prefHeight="440.0" prefWidth="440.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pl.kawka.appobrona.controllers.EmployeeCreateController">
     <children>
         <Label layoutX="39.0" layoutY="21.0" text="Wpisz dane nowego pracownika:" />
-        <TextField fx:id="idFieldFirstName" layoutX="39.0" layoutY="50.0" promptText="Imie" />
-        <TextField fx:id="idFieldLastName" layoutX="39.0" layoutY="85.0" promptText="Nazwisko" />
-        <TextField fx:id="idFieldLogin" layoutX="39.0" layoutY="155.0" promptText="Login" />
-        <TextField fx:id="idFieldPassword" layoutX="39.0" layoutY="190.0" promptText="Hasło" />
-        <Button layoutX="300.0" layoutY="390.0" mnemonicParsing="false" onAction="#actionCreateEmployee" text="Stwórz pracownika" />
+        <Button layoutX="300.0" layoutY="390.0" mnemonicParsing="false" onAction="#actionCreateEmployee"
+                text="Dodaj pracownika" />
+        <TextField fx:id="fxidFieldFirstName" layoutX="39.0" layoutY="50.0" promptText="Imię" />
+        <TextField fx:id="fxidFieldLastName" layoutX="39.0" layoutY="85.0" promptText="Nazwisko" />
+        <TextField fx:id="fxidFieldLogin" layoutX="39.0" layoutY="155.0" promptText="Login" />
+        <TextField fx:id="fxidFieldPassword" layoutX="39.0" layoutY="190.0" promptText="Hasło" />
         <ChoiceBox fx:id="choiceBoxStatus" layoutX="39.0" layoutY="120.0" prefWidth="150.0" />
 
         <Label fx:id="lblFirstName" layoutX="199.0" layoutY="54.0" />

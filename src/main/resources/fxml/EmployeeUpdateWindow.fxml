@@ -9,11 +9,11 @@
 
     <children>
         <Label layoutX="39.0" layoutY="36.0" text="Zmień dane pracownika:" />
-        <TextField fx:id="idFieldFirstName" layoutX="39.0" layoutY="95.0" promptText="Imie" />
-        <TextField fx:id="idFieldLastName" layoutX="39.0" layoutY="130.0" promptText="Nazwisko" />
-        <TextField fx:id="idFieldStatus" layoutX="39.0" layoutY="165.0" promptText="Status" />
-        <TextField fx:id="idFieldLogin" layoutX="39.0" layoutY="200.0" promptText="Login" />
-        <TextField fx:id="idFieldPassword" layoutX="39.0" layoutY="235.0" promptText="Hasło" />
+        <TextField fx:id="fxidFieldFirstName" layoutX="39.0" layoutY="95.0" promptText="Imię" />
+        <TextField fx:id="fxidFieldLastName" layoutX="39.0" layoutY="130.0" promptText="Nazwisko" />
+        <TextField fx:id="fxidFieldStatus" layoutX="39.0" layoutY="165.0" promptText="Status" />
+        <TextField fx:id="fxidFieldLogin" layoutX="39.0" layoutY="200.0" promptText="Login" />
+        <TextField fx:id="fxidFieldPassword" layoutX="39.0" layoutY="235.0" promptText="Hasło" />
         <Button layoutX="265.0" layoutY="390.0" mnemonicParsing="false" onAction="#actionUpdateEmployee"
                 text="Modyfikacja pracownika" />
         <Label fx:id="fxidLabelId" layoutX="39.0" layoutY="69.0" text="ID klienta: ???" />

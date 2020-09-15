@@ -42,10 +42,10 @@ public class AdminWindowController {
     private TableColumn<Employee, String> id, firstName, lastName, status, login, password;
 
     @FXML
-    private TextField idFieldId, idFieldFirstName, idFieldLastName, idFieldStatus, idFieldLogin, idFieldPassword;
+    private TextField fxidFieldId, fxidFieldFirstName, fxidFieldLastName, fxidFieldStatus, fxidFieldLogin, fxidFieldPassword;
 
     @FXML
-    private Label fxidLblUpdateEmployee;
+    private Label fxidLblUpdateEmployee,fxidLblDeleteEmployee;
 
     @FXML
     public void readDatabase() {
@@ -101,7 +101,7 @@ public class AdminWindowController {
         secondStage.setScene(new Scene(root, 440, 440));
         secondStage.setMinWidth(440);
         secondStage.setMinHeight(440);
-        secondStage.setTitle("Stwórz pracownika");
+        secondStage.setTitle("Dodawanie pracownika");
         secondStage.show();
         logger.info("Wczytanie CreateEmployeeWindow");
     }
@@ -112,19 +112,19 @@ public class AdminWindowController {
 
         JSONObject json = new JSONObject();
         try {
-            if(idFieldId.getText().isEmpty()){
+            if(fxidFieldId.getText().isEmpty()){
                 json.put("id", 0);
             }else{
-                json.put("id", Integer.parseInt(idFieldId.getText()));
+                json.put("id", Integer.parseInt(fxidFieldId.getText()));
             }
         } catch (NumberFormatException e) {
             json.put("id", -1);
         }
-        json.put("firstName", idFieldFirstName.getText());
-        json.put("lastName", idFieldLastName.getText());
-        json.put("status", idFieldStatus.getText());
-        json.put("login", idFieldLogin.getText());
-        json.put("password", idFieldPassword.getText());
+        json.put("firstName", fxidFieldFirstName.getText());
+        json.put("lastName", fxidFieldLastName.getText());
+        json.put("status", fxidFieldStatus.getText());
+        json.put("login", fxidFieldLogin.getText());
+        json.put("password", fxidFieldPassword.getText());
 
         //System.out.println(json);
 
@@ -176,6 +176,8 @@ public class AdminWindowController {
 
     @FXML
     public void actionOpenUpdateEmployeeWindow() {
+        fxidLblDeleteEmployee.setText("");
+        fxidLblUpdateEmployee.setText("");
 
         Stage secondStage = new Stage();
         FXMLLoader loader = null;
@@ -206,39 +208,47 @@ public class AdminWindowController {
 
     @FXML
     public void actionDeleteEmployee() {
+        fxidLblDeleteEmployee.setText("");
+        fxidLblUpdateEmployee.setText("");
+
         System.out.println("********** Usunięcie pracownika **********");
 
         Employee selectedEmployee = null;
         if (employeeTableView.getSelectionModel().getSelectedItem() != null) {
             selectedEmployee = employeeTableView.getSelectionModel().getSelectedItem();
             //System.out.println(selectedEmployee.getId());
+
+            System.out.println("ID wybranego klienta do usunięcia: " + selectedEmployee.getId());
+            JSONObject json = new JSONObject();
+            json.put("id", selectedEmployee.getId().toString());
+            //System.out.println(json);
+
+            try {
+                URL url = new URL("http://localhost:8080/api/employee/delete");
+                HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+                conn.setUseCaches(false);
+                conn.setDoInput(true);
+                conn.setRequestProperty("Content-Type", "application/json");
+                conn.setDoOutput(true);
+                conn.setRequestMethod("DELETE");
+                OutputStreamWriter wr = new OutputStreamWriter(conn.getOutputStream());
+                wr.write(json.toString());
+                wr.flush();
+                wr.flush();
+                wr.close();
+                conn.getInputStream();
+
+                readDatabase();
+            } catch (Exception ex) {
+                ex.printStackTrace();
+                //logger.error("Loading Application Error.", ex);
+            }
+        } else {
+            System.out.println("Nie wybrano pracownika w tabeli do usunięcia");
+            fxidLblDeleteEmployee.setText("Nie wybrano pracownika w tabeli!");
         }
 
-        System.out.println("ID wybranego klienta do usunięcia: " + selectedEmployee.getId());
-        JSONObject json = new JSONObject();
-        json.put("id", selectedEmployee.getId().toString());
-        //System.out.println(json);
 
-        try {
-            URL url = new URL("http://localhost:8080/api/employee/delete");
-            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-            conn.setUseCaches(false);
-            conn.setDoInput(true);
-            conn.setRequestProperty("Content-Type", "application/json");
-            conn.setDoOutput(true);
-            conn.setRequestMethod("POST");
-            OutputStreamWriter wr = new OutputStreamWriter(conn.getOutputStream());
-            wr.write(json.toString());
-            wr.flush();
-            wr.flush();
-            wr.close();
-            conn.getInputStream();
-
-            readDatabase();
-        } catch (Exception ex) {
-            ex.printStackTrace();
-            //logger.error("Loading Application Error.", ex);
-        }
     }
 
     @FXML

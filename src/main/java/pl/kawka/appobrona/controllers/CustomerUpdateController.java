@@ -18,8 +18,8 @@ public class CustomerUpdateController {
     private Label fxidLabelId;
 
     @FXML
-    private TextField idFieldFirstName, idFieldLastName, idFieldTown, idFieldStreet, idFieldPostcode,
-            idFieldTelephoneNumber, idFieldNip, idFieldDateAdded;
+    private TextField fxidFieldFirstName, fxidFieldLastName, fxidFieldTown, fxidFieldStreet, fxidFieldPostcode,
+            fxidFieldTelephoneNumber, fxidFieldNip, fxidFieldDateAdded;
 
     @FXML
     private Label lblFirstName, lblLastName, lblTown, lblStreet, lblPostcode, lblTelephoneNumber, lblNip,
@@ -31,14 +31,14 @@ public class CustomerUpdateController {
     void initData(Customer customer) {
         idSelectedCustomer = customer.getId();
         fxidLabelId.setText("ID wybranego klienta: " + idSelectedCustomer);
-        idFieldFirstName.setText(customer.getFirstName());
-        idFieldLastName.setText(customer.getLastName());
-        idFieldTown.setText(customer.getTown());
-        idFieldStreet.setText(customer.getStreet());
-        idFieldPostcode.setText(customer.getPostcode());
-        idFieldTelephoneNumber.setText(customer.getTelephoneNumber());
-        idFieldNip.setText(customer.getNip());
-        idFieldDateAdded.setText(customer.getDateAdded());
+        fxidFieldFirstName.setText(customer.getFirstName());
+        fxidFieldLastName.setText(customer.getLastName());
+        fxidFieldTown.setText(customer.getTown());
+        fxidFieldStreet.setText(customer.getStreet());
+        fxidFieldPostcode.setText(customer.getPostcode());
+        fxidFieldTelephoneNumber.setText(customer.getTelephoneNumber());
+        fxidFieldNip.setText(customer.getNip());
+        fxidFieldDateAdded.setText(customer.getDateAdded());
     }
 
     @FXML
@@ -55,14 +55,14 @@ public class CustomerUpdateController {
         lblDateAdded.setText("");
         lblCorrectEntry.setText("");
 
-        String firstName = idFieldFirstName.getText();
-        String lastName = idFieldLastName.getText();
-        String town = idFieldTown.getText();
-        String street = idFieldStreet.getText();
-        String postcode = idFieldPostcode.getText();
-        String telephoneNumber = idFieldTelephoneNumber.getText();
-        String nip = idFieldNip.getText();
-        String dateAdded = idFieldDateAdded.getText();
+        String firstName = fxidFieldFirstName.getText();
+        String lastName = fxidFieldLastName.getText();
+        String town = fxidFieldTown.getText();
+        String street = fxidFieldStreet.getText();
+        String postcode = fxidFieldPostcode.getText();
+        String telephoneNumber = fxidFieldTelephoneNumber.getText();
+        String nip = fxidFieldNip.getText();
+        String dateAdded = fxidFieldDateAdded.getText();
 
         Pattern compiledPatternString = Pattern.compile("[a-zA-ZżźćńółęąśŻŹĆĄŚĘŁÓŃ]{1,40}");
         Matcher matcherFirstName = compiledPatternString.matcher(firstName);
@@ -154,7 +154,7 @@ public class CustomerUpdateController {
             conn.setDoInput(true);
             conn.setRequestProperty("Content-Type", "application/json");
             conn.setDoOutput(true);
-            conn.setRequestMethod("POST"); //zeby wyslac jakies obiekt JSON chyba nie da sie z GET bo probowalem
+            conn.setRequestMethod("PUT"); //zeby wyslac jakies obiekt JSON chyba nie da sie z GET bo probowalem
             OutputStreamWriter wr = new OutputStreamWriter(conn.getOutputStream());
             wr.write(json.toString());  //wyslanie JSON
             wr.flush();

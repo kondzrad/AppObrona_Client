@@ -9,14 +9,14 @@
 
     <children>
         <Label layoutX="39.0" layoutY="36.0" text="Zmień dane klienta:" />
-        <TextField fx:id="idFieldFirstName" layoutX="39.0" layoutY="95.0" promptText="Imie" />
-        <TextField fx:id="idFieldLastName" layoutX="39.0" layoutY="130.0" promptText="Nazwisko" />
-        <TextField fx:id="idFieldTown" layoutX="39.0" layoutY="165.0" promptText="Miasto" />
-        <TextField fx:id="idFieldStreet" layoutX="39.0" layoutY="200.0" promptText="Ulica" />
-        <TextField fx:id="idFieldPostcode" layoutX="39.0" layoutY="235.0" promptText="Kod pocztowy" />
-        <TextField fx:id="idFieldTelephoneNumber" layoutX="39.0" layoutY="270.0" promptText="Numer telefonu" />
-        <TextField fx:id="idFieldNip" layoutX="39.0" layoutY="305.0" promptText="NIP" />
-        <TextField fx:id="idFieldDateAdded" layoutX="39.0" layoutY="340.0" promptText="Data dodania" />
+        <TextField fx:id="fxidFieldFirstName" layoutX="39.0" layoutY="95.0" promptText="Imię" />
+        <TextField fx:id="fxidFieldLastName" layoutX="39.0" layoutY="130.0" promptText="Nazwisko" />
+        <TextField fx:id="fxidFieldTown" layoutX="39.0" layoutY="165.0" promptText="Miasto" />
+        <TextField fx:id="fxidFieldStreet" layoutX="39.0" layoutY="200.0" promptText="Ulica" />
+        <TextField fx:id="fxidFieldPostcode" layoutX="39.0" layoutY="235.0" promptText="Kod pocztowy" />
+        <TextField fx:id="fxidFieldTelephoneNumber" layoutX="39.0" layoutY="270.0" promptText="Numer telefonu" />
+        <TextField fx:id="fxidFieldNip" layoutX="39.0" layoutY="305.0" promptText="NIP" />
+        <TextField fx:id="fxidFieldDateAdded" layoutX="39.0" layoutY="340.0" promptText="Data dodania" />
         <Button layoutX="295.0" layoutY="390.0" mnemonicParsing="false" onAction="#actionUpdateCustomer" text="Modyfikacja klienta" />
         <Label fx:id="fxidLabelId" layoutX="39.0" layoutY="69.0" text="ID klienta: ???" />
 

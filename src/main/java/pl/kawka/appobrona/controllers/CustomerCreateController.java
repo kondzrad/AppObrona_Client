@@ -16,8 +16,8 @@ import java.util.regex.Pattern;
 public class CustomerCreateController {
 
     @FXML
-    private TextField idFieldFirstName, idFieldLastName, idFieldTown, idFieldStreet, idFieldPostcode,
-            idFieldTelephoneNumber, idFieldNip;
+        private TextField fxidFieldFirstName, fxidFieldLastName, fxidFieldTown, fxidFieldStreet, fxidFieldPostcode,
+            fxidFieldTelephoneNumber, fxidFieldNip;
     @FXML
     private Label lblFirstName, lblLastName, lblTown, lblStreet, lblPostcode, lblTelephoneNumber, lblNip;
 
@@ -33,13 +33,13 @@ public class CustomerCreateController {
         lblTelephoneNumber.setText("");
         lblNip.setText("");
 
-        String firstName = idFieldFirstName.getText();
-        String lastName = idFieldLastName.getText();
-        String town = idFieldTown.getText();
-        String street = idFieldStreet.getText();
-        String postcode = idFieldPostcode.getText();
-        String telephoneNumber = idFieldTelephoneNumber.getText();
-        String nip = idFieldNip.getText();
+        String firstName = fxidFieldFirstName.getText();
+        String lastName = fxidFieldLastName.getText();
+        String town = fxidFieldTown.getText();
+        String street = fxidFieldStreet.getText();
+        String postcode = fxidFieldPostcode.getText();
+        String telephoneNumber = fxidFieldTelephoneNumber.getText();
+        String nip = fxidFieldNip.getText();
 
         Pattern compiledPatternString = Pattern.compile("[a-zA-ZżźćńółęąśŻŹĆĄŚĘŁÓŃ]{1,40}");
         Matcher matcherFirstName = compiledPatternString.matcher(firstName);

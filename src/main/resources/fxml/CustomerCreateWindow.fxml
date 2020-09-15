@@ -8,14 +8,15 @@
 <AnchorPane prefHeight="440.0" prefWidth="440.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pl.kawka.appobrona.controllers.CustomerCreateController">
     <children>
         <Label layoutX="39.0" layoutY="21.0" text="Wpisz dane nowego klienta:" />
-        <TextField fx:id="idFieldFirstName" layoutX="39.0" layoutY="50.0" promptText="Imie" />
-        <Button layoutX="320.0" layoutY="390.0" mnemonicParsing="false" onAction="#actionCreateCustomer" text="Stwórz klienta" />
-        <TextField fx:id="idFieldLastName" layoutX="39.0" layoutY="85.0" promptText="Nazwisko" />
-        <TextField fx:id="idFieldTown" layoutX="39.0" layoutY="120.0" promptText="Miasto" />
-        <TextField fx:id="idFieldStreet" layoutX="39.0" layoutY="155.0" promptText="Ulica" />
-        <TextField fx:id="idFieldPostcode" layoutX="39.0" layoutY="190.0" promptText="Kod pocztowy" />
-        <TextField fx:id="idFieldTelephoneNumber" layoutX="39.0" layoutY="225.0" promptText="Numer telefonu" />
-        <TextField fx:id="idFieldNip" layoutX="39.0" layoutY="260.0" promptText="NIP" />
+        <TextField fx:id="fxidFieldFirstName" layoutX="39.0" layoutY="50.0" promptText="Imię" />
+        <Button layoutX="320.0" layoutY="390.0" mnemonicParsing="false" onAction="#actionCreateCustomer"
+                text="Dodaj klienta" />
+        <TextField fx:id="fxidFieldLastName" layoutX="39.0" layoutY="85.0" promptText="Nazwisko" />
+        <TextField fx:id="fxidFieldTown" layoutX="39.0" layoutY="120.0" promptText="Miasto" />
+        <TextField fx:id="fxidFieldStreet" layoutX="39.0" layoutY="155.0" promptText="Ulica" />
+        <TextField fx:id="fxidFieldPostcode" layoutX="39.0" layoutY="190.0" promptText="Kod pocztowy" />
+        <TextField fx:id="fxidFieldTelephoneNumber" layoutX="39.0" layoutY="225.0" promptText="Numer telefonu" />
+        <TextField fx:id="fxidFieldNip" layoutX="39.0" layoutY="260.0" promptText="NIP" />
       <Label fx:id="lblFirstName" layoutX="200.0" layoutY="54.0" text="" />
       <Label fx:id="lblLastName" layoutX="200.0" layoutY="89.0" text="" />
       <Label fx:id="lblTown" layoutX="200.0" layoutY="124.0" text="" />

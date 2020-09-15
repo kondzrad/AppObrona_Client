@@ -17,15 +17,15 @@
         <Button layoutX="480.0" layoutY="45.0" mnemonicParsing="false" onAction="#actionOpenUpdateCustomerWindow" prefWidth="130.0" text="Modyfikuj klienta" />
         <Button layoutX="630.0" layoutY="45.0" mnemonicParsing="false" onAction="#actionDeleteCustomer" prefWidth="130.0" text="Usuń klienta" />
 
-        <TextField fx:id="idFieldId" layoutX="85.0" layoutY="160.0" prefWidth="75.0" promptText="ID" />
-        <TextField fx:id="idFieldFirstName" layoutX="180.0" layoutY="110.0" prefWidth="130.0" promptText="Imię" />
-        <TextField fx:id="idFieldLastName" layoutX="180.0" layoutY="160.0" prefWidth="130.0" promptText="Nazwisko" />
-        <TextField fx:id="idFieldTown" layoutX="330.0" layoutY="110.0" prefWidth="130.0" promptText="Miasto" />
-        <TextField fx:id="idFieldStreet" layoutX="330.0" layoutY="160.0" prefWidth="130.0" promptText="Ulica" />
-        <TextField fx:id="idFieldPostcode" layoutX="480.0" layoutY="110.0" prefWidth="130.0" promptText="Kod pocztowy" />
-        <TextField fx:id="idFieldTelephoneNumber" layoutX="480.0" layoutY="160.0" prefWidth="130.0" promptText="Numer telefonu" />
-        <TextField fx:id="idFieldNip" layoutX="630.0" layoutY="110.0" prefWidth="130.0" promptText="NIP" />
-        <TextField fx:id="idFieldDateAdded" layoutX="630.0" layoutY="160.0" prefWidth="130.0" promptText="Data dodania" />
+        <TextField fx:id="fxidFieldId" layoutX="85.0" layoutY="160.0" prefWidth="75.0" promptText="ID" />
+        <TextField fx:id="fxidFieldFirstName" layoutX="180.0" layoutY="110.0" prefWidth="130.0" promptText="Imię" />
+        <TextField fx:id="fxidFieldLastName" layoutX="180.0" layoutY="160.0" prefWidth="130.0" promptText="Nazwisko" />
+        <TextField fx:id="fxidFieldTown" layoutX="330.0" layoutY="110.0" prefWidth="130.0" promptText="Miasto" />
+        <TextField fx:id="fxidFieldStreet" layoutX="330.0" layoutY="160.0" prefWidth="130.0" promptText="Ulica" />
+        <TextField fx:id="fxidFieldPostcode" layoutX="480.0" layoutY="110.0" prefWidth="130.0" promptText="Kod pocztowy" />
+        <TextField fx:id="fxidFieldTelephoneNumber" layoutX="480.0" layoutY="160.0" prefWidth="130.0" promptText="Numer telefonu" />
+        <TextField fx:id="fxidFieldNip" layoutX="630.0" layoutY="110.0" prefWidth="130.0" promptText="NIP" />
+        <TextField fx:id="fxidFieldDateAdded" layoutX="630.0" layoutY="160.0" prefWidth="130.0" promptText="Data dodania" />
 
         <TableView fx:id="customerTableView" layoutX="18.0" layoutY="204.0" prefHeight="415.0" prefWidth="761.0">
             <columns>
@@ -34,13 +34,14 @@
                 <TableColumn fx:id="lastName" prefWidth="80.0" text="Nazwisko" />
                 <TableColumn fx:id="town" prefWidth="85.0" text="Miasto" />
                 <TableColumn fx:id="street" prefWidth="85.0" text="Ulica" />
-                <TableColumn fx:id="postcode" prefWidth="60.0" text="Kod poczt." />
+                <TableColumn fx:id="postcode" prefWidth="70.0" text="Kod poczt." />
                 <TableColumn fx:id="telephoneNumber" prefWidth="105.0" text="Telefon" />
                 <TableColumn fx:id="nip" prefWidth="89.0" text="NIP" />
-                <TableColumn fx:id="dateAdded" prefWidth="135.0" text="Data" />
+                <TableColumn fx:id="dateAdded" prefWidth="125.0" text="Data" />
             </columns>
         </TableView>
         <Label fx:id="lblBadDateAdded" layoutX="635.0" layoutY="143.0" />
         <Label fx:id="fxidLblUpdateCustomer" layoutX="470.0" layoutY="29.0" />
+        <Label fx:id="fxidLblDeleteCustomer" layoutX="610.0" layoutY="29.0" />
     </children>
 </AnchorPane>

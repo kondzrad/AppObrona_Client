@@ -18,7 +18,7 @@ public class EmployeeUpdateController {
     private Label fxidLabelId;
 
     @FXML
-    private TextField idFieldFirstName, idFieldLastName, idFieldStatus, idFieldLogin, idFieldPassword;
+    private TextField fxidFieldFirstName, fxidFieldLastName, fxidFieldStatus, fxidFieldLogin, fxidFieldPassword;
 
     @FXML
     private Label lblFirstName, lblLastName, lblStatus, lblLogin, lblPassword;
@@ -29,11 +29,11 @@ public class EmployeeUpdateController {
     void initData(Employee employee) {
         idSelectedEmployee = employee.getId();
         fxidLabelId.setText("ID wybranego klienta: " + idSelectedEmployee);
-        idFieldFirstName.setText(employee.getFirstName());
-        idFieldLastName.setText(employee.getLastName());
-        idFieldStatus.setText(employee.getStatus());
-        idFieldLogin.setText(employee.getLogin());
-        idFieldPassword.setText(employee.getPassword());
+        fxidFieldFirstName.setText(employee.getFirstName());
+        fxidFieldLastName.setText(employee.getLastName());
+        fxidFieldStatus.setText(employee.getStatus());
+        fxidFieldLogin.setText(employee.getLogin());
+        fxidFieldPassword.setText(employee.getPassword());
     }
 
     @FXML
@@ -45,11 +45,11 @@ public class EmployeeUpdateController {
         lblLogin.setText("");
         lblPassword.setText("");
 
-        String firstName = idFieldFirstName.getText();
-        String lastName = idFieldLastName.getText();
-        String status = idFieldStatus.getText();
-        String login = idFieldLogin.getText();
-        String password = idFieldPassword.getText();
+        String firstName = fxidFieldFirstName.getText();
+        String lastName = fxidFieldLastName.getText();
+        String status = fxidFieldStatus.getText();
+        String login = fxidFieldLogin.getText();
+        String password = fxidFieldPassword.getText();
 
         Pattern compiledPatternString = Pattern.compile("[a-zA-ZżźćńółęąśŻŹĆĄŚĘŁÓŃ]{1,40}");
         Matcher matcherFirstName = compiledPatternString.matcher(firstName);
@@ -76,7 +76,7 @@ public class EmployeeUpdateController {
             status = status.substring(0, 1).toUpperCase() + status.substring(1).toLowerCase();
         } else {
             falseMatcher++;
-            lblStatus.setText("Popraw miasto! 1-40 liter");
+            lblStatus.setText("Popraw status! 1-40 liter");
         }
         if (matcherLogin.matches()) {
         } else {
@@ -110,7 +110,7 @@ public class EmployeeUpdateController {
                 conn.setDoInput(true);
                 conn.setRequestProperty("Content-Type", "application/json");
                 conn.setDoOutput(true);
-                conn.setRequestMethod("POST"); //zeby wyslac jakies obiekt JSON chyba nie da sie z GET bo probowalem
+                conn.setRequestMethod("PUT"); //zeby wyslac jakies obiekt JSON chyba nie da sie z GET bo probowalem
                 OutputStreamWriter wr = new OutputStreamWriter(conn.getOutputStream());
                 wr.write(json.toString());  //wyslanie JSON
                 wr.flush();

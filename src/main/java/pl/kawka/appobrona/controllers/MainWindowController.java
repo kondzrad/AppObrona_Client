@@ -12,7 +12,7 @@ import java.io.IOException;
 public class MainWindowController { //kontroler glownego pustego okna
 
     @FXML
-    private AnchorPane mainStackPane; //musi byc przypisany fx:id="mainStackPane"
+    private AnchorPane mainAnchorPane; //musi byc przypisany fx:id="mainStackPane"
 
     @FXML
     public void initialize() { //metoda wywolywana zaraz po kontruktorze
@@ -38,9 +38,9 @@ public class MainWindowController { //kontroler glownego pustego okna
 
     public void setScreen(Pane pane) {
         //wyrzucalo Null exception poniewaz nie mialem przypisanego: fx:id="mainStackPane" w MainWindow.fxml
-        mainStackPane.getChildren().clear(); //usuwanie elemntow by kolejne elementy nie naklay sie na siebie po
+        mainAnchorPane.getChildren().clear(); //usuwanie elemntow by kolejne elementy nie naklay sie na siebie po
         // przejsciu na kolejne ekrany
-        mainStackPane.getChildren().add(pane); //pobieramy dzieci czyli liste elementow co w sobie zawiera
+        mainAnchorPane.getChildren().add(pane); //pobieramy dzieci czyli liste elementow co w sobie zawiera
     }
 
 }
