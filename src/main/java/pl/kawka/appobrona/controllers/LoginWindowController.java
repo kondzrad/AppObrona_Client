@@ -10,7 +10,7 @@ import org.json.simple.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
-import pl.kawka.appobrona.AppObronaClient;
+import pl.kawka.appobrona.GraduationWorkAppClient;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -25,7 +25,7 @@ public class LoginWindowController {
 
     private MainWindowController mainWindowController;
 
-    private static final Logger logger = LoggerFactory.getLogger(AppObronaClient.class);
+    private static final Logger logger = LoggerFactory.getLogger(GraduationWorkAppClient.class);
 
     public LoginWindowController() {
         System.out.println("********** Załadowanie okna logowania **********");

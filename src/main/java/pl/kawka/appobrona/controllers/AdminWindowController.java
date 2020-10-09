@@ -18,7 +18,7 @@ import org.json.simple.parser.JSONParser;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
-import pl.kawka.appobrona.AppObronaClient;
+import pl.kawka.appobrona.GraduationWorkAppClient;
 import pl.kawka.appobrona.model.Employee;
 
 import java.io.BufferedReader;
@@ -31,7 +31,7 @@ import java.net.URL;
 @Controller
 public class AdminWindowController {
 
-    private static final Logger logger = LoggerFactory.getLogger(AppObronaClient.class);
+    private static final Logger logger = LoggerFactory.getLogger(GraduationWorkAppClient.class);
 
     private MainWindowController mainWindowController;
 

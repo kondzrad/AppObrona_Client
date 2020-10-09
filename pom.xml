@@ -9,9 +9,9 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>pl.kawka</groupId>
-    <artifactId>appobrona3</artifactId>
+    <artifactId>graduationworkappclient</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>appobrona3</name>
+    <name>graduationworkappclient</name>
     <description>Spring Boot MySQL Maven JavaFX</description>
 
     <properties>
