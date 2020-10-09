@@ -7,7 +7,7 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="680.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pl.kawka.appobrona.controllers.AdminWindowController">
+<AnchorPane prefHeight="680.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pl.kawka.graduationworkapp.controllers.AdminWindowController">
     <children>
         <Label layoutX="353.0" layoutY="6.0" text="Konto administratora" />
         <Button layoutX="725.0" layoutY="635.0" mnemonicParsing="false" onAction="#back" text="Wstecz" />

@@ -1,4 +1,4 @@
-package pl.kawka.appobrona.controllers;
+package pl.kawka.graduationworkapp.controllers;
 
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
@@ -10,7 +10,7 @@ import org.json.simple.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
-import pl.kawka.appobrona.GraduationWorkAppClient;
+import pl.kawka.graduationworkapp.GraduationWorkAppClient;
 
 import java.io.BufferedReader;
 import java.io.IOException;

@@ -1,4 +1,4 @@
-package pl.kawka.appobrona.model;
+package pl.kawka.graduationworkapp.model;
 
 public class Employee {  //odwzorowanie modelu z Serwera
 

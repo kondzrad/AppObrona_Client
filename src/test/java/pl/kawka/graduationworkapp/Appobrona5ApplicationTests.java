@@ -1,4 +1,4 @@
-package pl.kawka.appobrona;
+package pl.kawka.graduationworkapp;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

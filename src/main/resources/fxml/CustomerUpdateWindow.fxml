@@ -5,7 +5,7 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="440.0" prefWidth="440.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pl.kawka.appobrona.controllers.CustomerUpdateController">
+<AnchorPane prefHeight="440.0" prefWidth="440.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pl.kawka.graduationworkapp.controllers.CustomerUpdateController">
 
     <children>
         <Label layoutX="39.0" layoutY="36.0" text="Zmień dane klienta:" />

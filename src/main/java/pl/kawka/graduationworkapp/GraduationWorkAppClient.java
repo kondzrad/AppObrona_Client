@@ -1,4 +1,4 @@
-package pl.kawka.appobrona;
+package pl.kawka.graduationworkapp;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;

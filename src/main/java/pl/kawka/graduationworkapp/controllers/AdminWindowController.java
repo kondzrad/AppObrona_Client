@@ -1,4 +1,4 @@
-package pl.kawka.appobrona.controllers;
+package pl.kawka.graduationworkapp.controllers;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -18,8 +18,8 @@ import org.json.simple.parser.JSONParser;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
-import pl.kawka.appobrona.GraduationWorkAppClient;
-import pl.kawka.appobrona.model.Employee;
+import pl.kawka.graduationworkapp.GraduationWorkAppClient;
+import pl.kawka.graduationworkapp.model.Employee;
 
 import java.io.BufferedReader;
 import java.io.IOException;

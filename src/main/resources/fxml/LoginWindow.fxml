@@ -7,7 +7,7 @@
 
 <!-- dodany u gory kontroler  -->
 
-<AnchorPane prefHeight="680.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pl.kawka.appobrona.controllers.LoginWindowController">
+<AnchorPane prefHeight="680.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pl.kawka.graduationworkapp.controllers.LoginWindowController">
     <children>
         <Label layoutX="46.0" layoutY="37.0" text="Logowanie" />
         <TextField fx:id="fieldLogin" layoutX="46.0" layoutY="81.0" promptText="Login" />

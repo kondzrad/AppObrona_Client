@@ -1,4 +1,4 @@
-package pl.kawka.appobrona.configuration.spring;
+package pl.kawka.graduationworkapp.configuration.spring;
 
 import org.springframework.context.annotation.Configuration;
 

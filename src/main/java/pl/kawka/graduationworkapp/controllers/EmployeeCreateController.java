@@ -1,4 +1,4 @@
-package pl.kawka.appobrona.controllers;
+package pl.kawka.graduationworkapp.controllers;
 
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;

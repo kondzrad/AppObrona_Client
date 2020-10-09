@@ -5,7 +5,7 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="440.0" prefWidth="440.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pl.kawka.appobrona.controllers.CustomerCreateController">
+<AnchorPane prefHeight="440.0" prefWidth="440.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pl.kawka.graduationworkapp.controllers.CustomerCreateController">
     <children>
         <Label layoutX="39.0" layoutY="21.0" text="Wpisz dane nowego klienta:" />
         <TextField fx:id="fxidFieldFirstName" layoutX="39.0" layoutY="50.0" promptText="Imię" />

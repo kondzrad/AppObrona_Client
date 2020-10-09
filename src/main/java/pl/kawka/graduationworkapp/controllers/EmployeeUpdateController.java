@@ -1,10 +1,10 @@
-package pl.kawka.appobrona.controllers;
+package pl.kawka.graduationworkapp.controllers;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import org.json.simple.JSONObject;
-import pl.kawka.appobrona.model.Employee;
+import pl.kawka.graduationworkapp.model.Employee;
 
 import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
